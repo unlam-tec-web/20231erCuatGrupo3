@@ -1,13 +1,22 @@
+.comprar{
+  color:#FFA200;
+  border:2px solid #FFA200;
+  color:#FFA200 !important;
+}
+.comprar:hover{
+  background-color:#FFA200;
+  color:white !important;
+  font-weight: bold;
+}
 .precio{
-    color:#FFA200;
-    font-weight: bold;
+    color:white;
 }
 .titulo{
-    color:#8A0000;
-    font-weight: bolder;
+    color: white;
+    font-weight: bold;
 }
-.comprar,.ver-mas{
-    background-color: #FFA200;
+.card {
+  --bs-card-bg:#212529;
 }
 .icons {
     display: inline-flex;
@@ -19,13 +28,13 @@
     display: block;
     position: relative;
   }
-  
+
   .icons a .layer {
     width: 55px;
     height: 55px;
     transition: transform 0.3s;
   }
-  
+
   .icons a:hover .layer {
     transform: rotate(-35deg) skew(20deg);
   }
@@ -67,7 +76,7 @@
     opacity: 1;
     transform: translate(25px, -25px);
   }
-  
+
   .icons a:nth-child(1) .layer span,
   .icons a:nth-child(1) .text {
     color: #1d9bf0;
@@ -98,7 +107,7 @@
     color: #9246ff;
     border-color: #9246ff;
   }
-  
+
   .icons a:nth-child(1) .layer span {
     box-shadow: -1px 1px 3px #1d9bf0;
   }
@@ -117,7 +126,7 @@
   .icons a:nth-child(5) .layer span {
     box-shadow: -1px 1px 3px #9246ff;
   }
-  
+
   .icons a .text {
     position: absolute;
     left: 50%;
