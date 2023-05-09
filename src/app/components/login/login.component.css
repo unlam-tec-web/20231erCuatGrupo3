@@ -45,7 +45,10 @@ button {
 	text-transform: uppercase;
 	transition: transform 80ms ease-in;
 }
-
+button:disabled{
+	background-color: #fda814;
+	opacity: 0.5;
+}
 button:active {
 	transform: scale(0.95);
 }

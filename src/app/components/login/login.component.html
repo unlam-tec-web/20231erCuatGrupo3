@@ -7,17 +7,13 @@
         </div>
         <span>O usá tu email para el registro.</span>
         <input type="text" placeholder="Nombre" formControlName="nombre" />
-        <input type="email" placeholder="Email" formControlName="emailRegistro" />
+        <input type="email" placeholder="Email"  formControlName="emailRegistro" />
         <div *ngIf="
-        !RegisterForm['emailRegistro'].valid && (RegisterForm['emailRegistro'].dirty ||RegisterForm['emailRegistro'].touched)">
+        registerForm.controls.emailRegistro.invalid && (registerForm.controls.emailRegistro.dirty || registerForm.controls.emailRegistro.touched)">
         <p class="text-danger">El email no cumple con el formato establecido.</p>
         </div>
-        <input type="password" placeholder="Contraseña" formControlName="passwordRegistro" />
-        {{registerForm.value |json}}
-        {{registerForm.valid |json}}
-        {{registerForm.errors}}
-
-        <button class="mt-2 mb-4" [disabled]="!registerForm.valid" >Registrar cuenta</button>
+        <input type="password" placeholder="Contraseña" formControlName="passwordRegistro"/>
+        <button class="mt-2 mb-4" [disabled]="registerForm.invalid" >Registrar cuenta</button>
       </form>
     </div>
     <div class="form-container sign-in-container">
@@ -29,7 +25,7 @@
           <input type="text" class="form-control" placeholder="Email" formControlName="email">
           <input type="password" class="form-control" placeholder="Contraseña" formControlName="password" />
         <a href="#">Olvidaste tu contraseña?</a>
-        <button class="btn-danger">Ingresar</button>
+        <button [disabled]="loginForm.invalid">Ingresar</button>
       </form>
     </div>
     <div class="overlay-container" >
@@ -37,12 +33,12 @@
         <div class="overlay-panel overlay-left">
           <h1>Bienvenido de vuelta !</h1>
           <p>Para mantenerse conectado con nosotros, inicie sesión con su información personal</p>
-          <button class="ghost" (click)="rightPanelClass = false" id="signIn">Iniciar sesión</button>
+          <button class="ghost" (click)="rightPanelClass = false; resetarFormulario()" id="signIn">Iniciar sesión</button>
         </div>
         <div class="overlay-panel overlay-right">
           <h1>Bienvenido!</h1>
           <p>Ingresa tus datos personales y comienza tu trayecto con nosotros</p>
-          <button class="ghost" (click)="rightPanelClass = true"  id="signUp">Registrarse</button>
+          <button class="ghost" (click)="rightPanelClass = true;" id="signUp">Registrarse</button>
         </div>
       </div>
     </div>

@@ -11,7 +11,7 @@ export class LoginComponent implements OnInit {
   user?: SocialUser;
   loggedIn: boolean | undefined;
   rightPanelClass : boolean = false;
-  emailValidator :string = ('[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$')
+  emailValidator  = new RegExp(/[A-Z0-9._+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i);
   
   constructor(private authService: SocialAuthService,
     private fb:FormBuilder) {}
@@ -23,7 +23,12 @@ export class LoginComponent implements OnInit {
       console.log(this.user);
     });
   }
-  
+
+  resetarFormulario(){
+    this.registerForm.clearValidators()
+    this.registerForm.reset();
+  }
+ 
   loginForm = this.fb.group({
     email:  ['',[Validators.required]],
     password: ['',[Validators.required]],
@@ -35,13 +40,4 @@ export class LoginComponent implements OnInit {
     passwordRegistro:['',[Validators.required]],
   });
 
-  get LoginForm(){
-    return this.loginForm.controls;
-  }
-
-  get RegisterForm(){
-    return this.registerForm.controls;
-  }
-
-  
 }
