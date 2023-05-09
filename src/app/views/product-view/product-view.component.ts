@@ -10,5 +10,5 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
   styleUrls: ['./product-view.component.css']
 })
 export class ProductViewComponent {
-  title = 'taller';
+  title = 'product...';
 }

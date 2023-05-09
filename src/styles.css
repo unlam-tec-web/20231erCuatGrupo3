@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
+/*Font*/
 *{
   font-family: 'Atkinson Hyperlegible', sans-serif;
 }
@@ -20,6 +21,7 @@
 .texto{
   font-family: 'Atkinson Hyperlegible', sans-serif;
   font-weight: 300;
+  font-size: 16px;
   text-decoration: none !important;
 }
 
@@ -33,5 +35,26 @@
 .BEEGTEXT{
   font-weight: 600;
 }
+.destacados{
+  color:#8A0000;
+}
 
+.formato-descripcion{
+  color:grey;
+}
+.contenido-principal{
+  background-color: #F3F3F3;
+}
+
+/*Botones*/
+
+.botonUno{
+  border:2px solid #FFA200 !important;
+  background-color: #FFA200  !important;
+  color:white !important;
+}
+.botonUno:hover{
+  border:2px solid #ffc150 !important;
+  background-color: #ffc150 !important;
+}
 
