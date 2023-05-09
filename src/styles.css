@@ -33,5 +33,7 @@
 .BEEGTEXT{
   font-weight: 600;
 }
-
+.ng-invalid.ng-touched{
+  border: 1px solid red;
+}
 
