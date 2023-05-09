@@ -1,13 +1,9 @@
 .comprar{
-  color:#FFA200;
   border:2px solid #FFA200;
-  color:#FFA200 !important;
-}
-.comprar:hover{
   background-color:#FFA200;
-  color:white !important;
-  font-weight: bold;
+  color:white;
 }
+
 .precio{
     color:white;
 }
