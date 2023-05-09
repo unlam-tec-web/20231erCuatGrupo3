@@ -8,11 +8,10 @@
 .boton-buscar{
     color:#FFA200;
     border:1px solid #FFA200;
-}
-.boton-buscar:hover{
     background-color:#FFA200;
     color:white;
 }
+
 .logo{
     width: 250px;
     height: 80px;

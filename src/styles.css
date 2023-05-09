@@ -34,7 +34,7 @@
 
 .BEEGTEXT{
   font-weight: 600;
-}
+
 .destacados{
   color:#8A0000;
 }
@@ -56,5 +56,10 @@
 .botonUno:hover{
   border:2px solid #ffc150 !important;
   background-color: #ffc150 !important;
+}
+  
+.ng-invalid.ng-touched{
+  border: 1px solid red;
+
 }
 

@@ -1,12 +1,8 @@
-.botonUno{
-  color:#FFA200;
+
+.comprar{
   border:2px solid #FFA200;
-  color:#FFA200 !important;
-}
-.botonUno:hover{
   background-color:#FFA200;
-  color:white !important;
-  font-weight: bold;
+  color:white;
 }
 
 .precio{

@@ -7,21 +7,50 @@ import { HomeViewComponent } from './views/home-view/home-view.component';
 import { ProductViewComponent} from './views/product-view/product-view.component';
 import { CardComponent } from './components/card/card.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { LoginComponent } from './components/login/login.component';
+import { LoginViewComponent } from './views/login-view/login-view.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule,GoogleSigninButtonModule } from '@abacritt/angularx-social-login';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
+    LoginComponent,
     HomeViewComponent,
     ProductViewComponent,
     CardComponent,
-    FooterComponent
+    FooterComponent,
+    LoginViewComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ReactiveFormsModule,
+    SocialLoginModule,
+    GoogleSigninButtonModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(
+              '1000883229550-at62jqoeegh4eshinjhul0r5sdnanbh0.apps.googleusercontent.com'
+            )
+          },
+        ],
+        onError: (err) => {
+          console.error(err);
+        }
+      } as SocialAuthServiceConfig,
+    }
+
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
