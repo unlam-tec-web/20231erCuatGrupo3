@@ -8,13 +8,14 @@
         <span>O usá tu email para el registro.</span>
         <input type="text" placeholder="Nombre" formControlName="nombre" />
         <input type="email" placeholder="Email"  formControlName="emailRegistro" />
-        <div *ngIf="
-        registerForm.controls.emailRegistro.invalid && (registerForm.controls.emailRegistro.dirty || registerForm.controls.emailRegistro.touched)">
-        <p class="text-danger">El email no cumple con el formato establecido.</p>
-        </div>
+        <p class="text-danger email" *ngIf="
+        registerForm.controls.emailRegistro.invalid 
+        && (registerForm.controls.emailRegistro.dirty || registerForm.controls.emailRegistro.touched)">El email no cumple con el formato establecido.</p>
         <input type="password" placeholder="Contraseña" formControlName="passwordRegistro"/>
-        <button class="mt-2 mb-4" [disabled]="registerForm.invalid" >Registrar cuenta</button>
+        <button class="btn registrar mt-2 mb-4" [disabled]="registerForm.invalid" >Registrar cuenta</button>
+        
       </form>
+   
     </div>
     <div class="form-container sign-in-container">
       <form [formGroup]="loginForm">
@@ -25,7 +26,8 @@
           <input type="text" class="form-control" placeholder="Email" formControlName="email">
           <input type="password" class="form-control" placeholder="Contraseña" formControlName="password" />
         <a href="#">Olvidaste tu contraseña?</a>
-        <button [disabled]="loginForm.invalid">Ingresar</button>
+        <button class="btn ingresar mt-2 mb-4" [disabled]="loginForm.invalid">Ingresar</button>
+        
       </form>
     </div>
     <div class="overlay-container" >

@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
   });
 
   registerForm = this.fb.group({
-    nombre:['',[Validators.required]],
+    nombre:['',[Validators.required,Validators.minLength(3)]],
     emailRegistro:['',[Validators.required,Validators.pattern(this.emailValidator)]],
     passwordRegistro:['',[Validators.required]],
   });
