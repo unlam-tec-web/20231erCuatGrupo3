@@ -11,17 +11,17 @@ export class HomeViewComponent {
     {
       id: '1',
       type: 'Cervezas',
-      img: '../../../assets/img/heineken.jpg'
+      img: '../../../assets/img/categoriacerveza.jpg'
     },
     {
       id: '2',
       type: 'Vinos',
-      img: '../../../assets/img/heineken.jpg'
+      img: '../../../assets/img/categoriavino.jpg'
     },
     {
       id: '3',
       type: 'Whiskeys',
-      img: '../../../assets/img/heineken.jpg'
+      img: '../../../assets/img/categoriawhiskey.jpg'
     },
   ]
 

@@ -9,4 +9,8 @@ export class ThumbnailsComponent {
   @Input() img : any = '';
   @Input() price : any = '';
   @Input() name : any = '';
+ /*
+  onClick(){
+    this.router.navigate(['/categoria'])
+  }*/
 }

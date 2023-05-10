@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-card',
@@ -9,4 +10,12 @@ export class CardComponent {
 @Input() img : any = '';
 @Input() price : any = '';
 @Input() name : any = '';
+
+  constructor( protected router:Router){
+
+  }
+
+  onClick(){
+    this.router.navigate(['/product'])
+  }
 }
