@@ -11,6 +11,7 @@ import { LoginComponent } from './components/login/login.component';
 import { LoginViewComponent } from './views/login-view/login-view.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule,GoogleSigninButtonModule } from '@abacritt/angularx-social-login';
+import { ThumbnailsComponent } from './components/thumbnails/thumbnails.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule,GoogleS
     ProductViewComponent,
     CardComponent,
     FooterComponent,
-    LoginViewComponent
+    LoginViewComponent,
+    ThumbnailsComponent
   ],
   imports: [
     BrowserModule,
