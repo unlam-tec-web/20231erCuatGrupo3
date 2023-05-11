@@ -12,6 +12,7 @@ import { LoginViewComponent } from './views/login-view/login-view.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule,GoogleSigninButtonModule } from '@abacritt/angularx-social-login';
 import { ThumbnailsComponent } from './components/thumbnails/thumbnails.component';
+import { QuantitySelectorModule } from '@mugan86/ng-shop-ui';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { ThumbnailsComponent } from './components/thumbnails/thumbnails.componen
     AppRoutingModule,
     ReactiveFormsModule,
     SocialLoginModule,
+    QuantitySelectorModule,
     GoogleSigninButtonModule
   ],
   providers: [
