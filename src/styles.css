@@ -50,6 +50,13 @@
 .formato-descripcion{
   color:grey;
 }
+.tamamo-descripcion{
+  font-size: 30px;
+}
+
+.tamamo-descripcion-sub{
+  font-size: 20px;
+}
 .contenido-principal{
   background-color: #F3F3F3;
 }

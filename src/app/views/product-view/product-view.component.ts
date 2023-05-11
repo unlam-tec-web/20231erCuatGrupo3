@@ -8,6 +8,9 @@ import {Component} from '@angular/core';
 
 export class ProductViewComponent{
 
+  quantity : number =1;
+  stock : number =10;
+
   products = [
     {
       id:'1',
@@ -51,4 +54,8 @@ export class ProductViewComponent{
     },
   ];
 
-}
+  changeValue($event: any) {
+    console.log($event);
+  }
+
+  }
