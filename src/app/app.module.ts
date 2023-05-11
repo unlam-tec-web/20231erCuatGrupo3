@@ -12,6 +12,8 @@ import { LoginViewComponent } from './views/login-view/login-view.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule,GoogleSigninButtonModule } from '@abacritt/angularx-social-login';
 import { ThumbnailsComponent } from './components/thumbnails/thumbnails.component';
+import { RecoverPasswordViewComponent } from './views/recover-password-view/recover-password-view.component';
+import { RecoverPasswordComponent } from './components/recover-password/recover-password.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { ThumbnailsComponent } from './components/thumbnails/thumbnails.componen
     CardComponent,
     FooterComponent,
     LoginViewComponent,
-    ThumbnailsComponent
+    ThumbnailsComponent,
+    RecoverPasswordViewComponent,
+    RecoverPasswordComponent
   ],
   imports: [
     BrowserModule,
