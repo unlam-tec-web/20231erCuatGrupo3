@@ -12,6 +12,8 @@ import { LoginViewComponent } from './views/login-view/login-view.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule,GoogleSigninButtonModule } from '@abacritt/angularx-social-login';
 import { ThumbnailsComponent } from './components/thumbnails/thumbnails.component';
+
+import { QuantitySelectorModule } from '@mugan86/ng-shop-ui';
 import { RecoverPasswordViewComponent } from './views/recover-password-view/recover-password-view.component';
 import { RecoverPasswordComponent } from './components/recover-password/recover-password.component';
 
@@ -34,6 +36,7 @@ import { RecoverPasswordComponent } from './components/recover-password/recover-
     AppRoutingModule,
     ReactiveFormsModule,
     SocialLoginModule,
+    QuantitySelectorModule,
     GoogleSigninButtonModule
   ],
   providers: [
