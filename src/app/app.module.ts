@@ -16,6 +16,7 @@ import { ThumbnailsComponent } from './components/thumbnails/thumbnails.componen
 import { QuantitySelectorModule } from '@mugan86/ng-shop-ui';
 import { RecoverPasswordViewComponent } from './views/recover-password-view/recover-password-view.component';
 import { RecoverPasswordComponent } from './components/recover-password/recover-password.component';
+import { CartViewComponent } from './views/cart-view/cart-view.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { RecoverPasswordComponent } from './components/recover-password/recover-
     LoginViewComponent,
     ThumbnailsComponent,
     RecoverPasswordViewComponent,
-    RecoverPasswordComponent
+    RecoverPasswordComponent,
+    CartViewComponent
   ],
   imports: [
     BrowserModule,
