@@ -9,9 +9,6 @@ export class CategoryViewComponent {
 
   idReceived : number =1;
 
-  findById(products: any[],idReceived: number): any[] {
-    return products.filter(p => p.id == idReceived);
-  }
 
   categories = [
     {
@@ -33,7 +30,7 @@ export class CategoryViewComponent {
 
   products = [
     {
-      id:'1',
+      id:1,
       type: 'Cerveza',
       name:'Heineken 6x 355cc Sin Alcohol',
       details:'Rubia',
@@ -43,7 +40,7 @@ export class CategoryViewComponent {
       img:'../../../assets/img/heineken.jpg'
     },
     {
-      id:'2',
+      id:2,
       type: 'Vinos',
       name:'Alamos Chardonay 750ml',
       details:'Blanco',
@@ -53,7 +50,7 @@ export class CategoryViewComponent {
       img:'../../../assets/img/0019-ALAMOS-CHARDONNAY.jpg'
     },
     {
-      id:'3',
+      id:3,
       type: 'Vinos',
       name:'Benjamin Malbec 750ml',
       details:'Tinto',
@@ -63,7 +60,7 @@ export class CategoryViewComponent {
       img:'../../../assets/img/BENJAMIN-MALBEC.jpg'
     },
     {
-      id:'4',
+      id:4,
       type: 'Cerveza',
       name:'Budweiser 410cc',
       details:'Rubia',
