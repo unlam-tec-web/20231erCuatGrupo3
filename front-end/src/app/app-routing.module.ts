@@ -10,11 +10,11 @@ import {CategoryViewComponent} from "./views/category-view/category-view.compone
 
 const routes: Routes = [
   {path:'',component:HomeViewComponent},
-  {path: 'product', component: ProductViewComponent},
+  {path: 'product/:name', component: ProductViewComponent},
   {path:'login',component:LoginViewComponent},
   {path:'recover-password',component:RecoverPasswordViewComponent},
   {path:'cart',component:CartViewComponent},
-  {path:'category',component:CategoryViewComponent}
+  {path:'category/:name',component:CategoryViewComponent}
 
 
 ];

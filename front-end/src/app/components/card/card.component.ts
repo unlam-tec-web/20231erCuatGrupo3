@@ -10,12 +10,12 @@ export class CardComponent {
 @Input() img : any = '';
 @Input() price : any = '';
 @Input() name : any = '';
-
+@Input() id : any = '';
   constructor( protected router:Router){
 
   }
 
-  onClick(){
-    this.router.navigate(['/product'])
+  viewProduct(id:number){
+    this.router.navigate(['/product',id])
   }
 }

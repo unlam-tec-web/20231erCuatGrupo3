@@ -15,7 +15,7 @@ export class ThumbnailsComponent {
 
   }
 
-  onClick(){
-    this.router.navigate(['/category'])
+  viewCategory(name : string){
+    this.router.navigate(['/category',name])
   }
 }
