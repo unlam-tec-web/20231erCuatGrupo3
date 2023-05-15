@@ -1,14 +1,30 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-category-view',
   templateUrl: './category-view.component.html',
   styleUrls: ['./category-view.component.css']
 })
-export class CategoryViewComponent {
+export class CategoryViewComponent implements OnInit{
+  name!: string;
+  private sub: any;
 
-  idReceived : number =1;
+  constructor( private route:ActivatedRoute){
 
+  }
+
+  ngOnInit(): void {
+    this.sub = this.route.params.subscribe(params => {this.name = params['name']})
+  }
+
+  ngOnDestroy():void{
+    this.sub.unsubscribe();
+  }
+
+  findByName(products: any[],name: string): any[] {
+    return products.filter(p => p.category == name);
+  }
 
   categories = [
     {
@@ -32,6 +48,7 @@ export class CategoryViewComponent {
     {
       id:1,
       type: 'Cerveza',
+      category: 'Cervezas',
       name:'Heineken 6x 355cc Sin Alcohol',
       details:'Rubia',
       description: 'Cerveza Heineken Sin Alcohol 0.0% Lata 355ml Pack x6',
@@ -41,7 +58,8 @@ export class CategoryViewComponent {
     },
     {
       id:2,
-      type: 'Vinos',
+      type: 'Vino',
+      category: 'Vinos',
       name:'Alamos Chardonay 750ml',
       details:'Blanco',
       description: 'Botella de vino blanco, Alamos Chardonay de 750ml.',
@@ -51,7 +69,8 @@ export class CategoryViewComponent {
     },
     {
       id:3,
-      type: 'Vinos',
+      type: 'Vino',
+      category: 'Vinos',
       name:'Benjamin Malbec 750ml',
       details:'Tinto',
       description: 'Botella de vino blanco, Benjamin Malbec de 750ml.',
@@ -62,6 +81,7 @@ export class CategoryViewComponent {
     {
       id:4,
       type: 'Cerveza',
+      category: 'Cervezas',
       name:'Budweiser 410cc',
       details:'Rubia',
       description: 'Cerveza Budweiser en lata de 410cc.',

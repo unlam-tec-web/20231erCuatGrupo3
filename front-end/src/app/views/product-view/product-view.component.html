@@ -7,14 +7,14 @@
       <div class="row col-lg-12">
 
         <div class="col-lg-6 d-flex justify-content-center align-items-center position-relative">
-          <img src="/assets/img/heineken.jpg" class="img-fluid mt-3 mb-3" alt="...">
+          <img src={{products[id].img}} class="img-fluid mt-3 mb-3" alt="...">
         </div>
 
         <div class=" margin-top-descripcion mt-3 col-lg-6 col-12 col-md-6 text-start">
           <p class="tituloprincipal mb-0">{{products[id].name}}</p>
-          <p class="formato-descripcion tamamo-descripcion mb-0">Cerveza Rubia</p>
-          <p class="formato-descripcion tamamo-descripcion-sub">Cerveza Heineken Sin Alcohol 0.0% Lata 355ml Pack x6</p>
-          <p class="tituloprincipal destacados">$3000</p>
+          <p class="formato-descripcion tamamo-descripcion mb-0">{{products[id].type}} {{products[id].details}}</p>
+          <p class="formato-descripcion tamamo-descripcion-sub">{{products[id].description}}</p>
+          <p class="tituloprincipal destacados">${{products[id].price}}</p>
           <shop-qty-selector [qty]="quantity" [stock]="stock" (updateValue)="changeValue($event)"></shop-qty-selector>
           <a href="#" class="btn btn-lg botonUno">Añadir al Carrito</a>
         </div>

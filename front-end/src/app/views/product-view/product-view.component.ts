@@ -25,11 +25,7 @@ export class ProductViewComponent implements OnInit{
   ngOnDestroy():void{
     this.sub.unsubscribe();
   }
-
-  findById(products: any[],idReceived: string): any[] {
-    return products.filter(p => p.id == idReceived);
-  }
-
+  
   products = [
     {
       id:1,
