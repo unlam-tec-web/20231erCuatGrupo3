@@ -5,3 +5,8 @@
 .color-categorias{
   color:#FFA200;
 }
+
+.thumbnailCard-style{
+  cursor: pointer !important;
+  width: 18rem;
+}

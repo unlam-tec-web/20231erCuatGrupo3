@@ -1,4 +1,5 @@
 import {Component, Input} from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-thumbnails',
@@ -9,8 +10,12 @@ export class ThumbnailsComponent {
   @Input() img : any = '';
   @Input() price : any = '';
   @Input() name : any = '';
- /*
-  onClick(){
-    this.router.navigate(['/categoria'])
-  }*/
+
+  constructor( protected router:Router){
+
+  }
+
+  viewCategory(name : string){
+    this.router.navigate(['/category',name])
+  }
 }
