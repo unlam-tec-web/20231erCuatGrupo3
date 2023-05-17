@@ -1,0 +1,21 @@
+{
+
+    "categories":[
+    {
+      "id":1,
+      "type":"Cervezas",
+      "img": "../../../assets/img/categoriacerveza.jpg"
+    },
+    {
+      "id":2,
+      "type":"Vinos",
+      "img":"../../../assets/img/categoriavino.jpg"
+    },
+    {
+      "id":3,
+      "type":"Whiskys",
+      "img":"../../../assets/img/categoriawhiskey.jpg"
+    }
+  ]
+
+}
