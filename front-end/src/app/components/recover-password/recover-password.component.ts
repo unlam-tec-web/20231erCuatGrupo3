@@ -16,3 +16,4 @@ export class RecoverPasswordComponent {
   recoverPassForm= this.fb.group({emailUser:['',[Validators.required,Validators.email,
       Validators.pattern(this.emailValidator)]]})
 }
+
