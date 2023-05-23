@@ -100,7 +100,7 @@ input {
 	overflow: hidden;
 	width: 900px;
 	max-width: 100%;
-	min-height: 600px;
+	min-height: 800px;
 }
 
 .form-container {
@@ -226,4 +226,11 @@ input {
 	margin: 0 5px;
 	height: 40px;
 	width: 40px;
+}
+
+.requisitos{
+	list-style: none;
+}
+.requisitos p{
+	font-weight: 400;
 }
