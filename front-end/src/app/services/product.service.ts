@@ -62,4 +62,8 @@ export class ProductService {
     })
     return foundProduct;
   }
+
+  public getProductsByName(name:string): Product[]{
+    return this.getProducts().filter(product => product.name.toLowerCase().includes(name));
+  }
 }
