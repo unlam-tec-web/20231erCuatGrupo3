@@ -15,6 +15,7 @@
           <p class="formato-descripcion tamamo-descripcion mb-0">{{products[id].type}} {{products[id].details}}</p>
           <p class="formato-descripcion tamamo-descripcion-sub">{{products[id].description}}</p>
           <p class="tituloprincipal destacados">${{products[id].price}}</p>
+          <p class="text-decoration-underline formato-descripcion tamamo-descripcion-sub">Precio Total: ${{totalPrice}}</p>
           <shop-qty-selector [qty]="quantity" [stock]="stock" (updateValue)="changeValue($event)"></shop-qty-selector>
           <a href="/cart" class="btn btn-lg botonUno">Añadir al Carrito</a>
         </div>

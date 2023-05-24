@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import products from '../../../assets/json objects/products.json';
+import categories from '../../../assets/json objects/categories.json';
 
 @Component({
   selector: 'app-home-view',
