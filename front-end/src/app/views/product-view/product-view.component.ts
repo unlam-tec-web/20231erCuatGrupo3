@@ -26,11 +26,19 @@ export class ProductViewComponent implements OnInit{
   {}
 
   ngOnInit(): void {
+    this.showProductToView();
+    this.setTotalPrice();
+  }
+
+  private showProductToView() {
     this.sub = this.route.params.subscribe(({id}) => {
       this.product = this.productService.getProductById(id);
     });
   }
 
+  setTotalPrice(){
+    this.totalPrice= this.product.price;
+  }
   ngOnDestroy():void{
     this.sub.unsubscribe();
   }
@@ -38,5 +46,17 @@ export class ProductViewComponent implements OnInit{
   changeValue($event: any) {
     console.log($event);
   }
+  getTotalPrice(){
+    this.totalPrice = this.quantity * this.product.price;
+  }
+
+  add(){
+    this.quantity += 1;
+  }
+
+  remove(){
+    this.quantity > 1 ? this.quantity -= 1 : this.quantity;
+  }
+
 
   }

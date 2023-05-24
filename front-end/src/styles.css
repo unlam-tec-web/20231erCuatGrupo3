@@ -16,7 +16,7 @@
   font-family: 'Bebas Neue', cursive;
   font-weight: 400;
   font-size:55px;
-  color: #FFA200;
+  color: #F75C03;
   text-decoration: none !important;
 }
 
@@ -64,13 +64,14 @@
 /*Botones*/
 
 .botonUno{
-  border:2px solid #FFA200 !important;
-  background-color: #FFA200  !important;
+  border:2px solid #F75C03 !important;
+  background-color:#F75C03 !important;
   color:white !important;
 }
 .botonUno:hover{
-  border:2px solid #ffc150 !important;
-  background-color: #ffc150 !important;
+  background-color: #ec6b20 !important;
+  border:2px solid #ec6b20 !important;
+  color:#353434 !important;
 }
 
 input.ng-invalid.ng-touched{
