@@ -1,3 +1,17 @@
 .margin-top-descripcion{
   margin-top: 7rem !important;
 }
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.symbolColor{
+  color:#F75C03 !important;
+}

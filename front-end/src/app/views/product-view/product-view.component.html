@@ -7,16 +7,36 @@
       <div class="row col-lg-12">
 
         <div class="col-lg-6 d-flex justify-content-center align-items-center position-relative">
-          <img src={{products[id].img}} class="img-fluid mt-3 mb-3" alt="...">
+          <img src={{product.img}} class="img-fluid mt-3 mb-3" alt="...">
         </div>
 
         <div class=" margin-top-descripcion mt-3 col-lg-6 col-12 col-md-6 text-start">
-          <p class="tituloprincipal mb-0">{{products[id].name}}</p>
-          <p class="formato-descripcion tamamo-descripcion mb-0">{{products[id].type}} {{products[id].details}}</p>
-          <p class="formato-descripcion tamamo-descripcion-sub">{{products[id].description}}</p>
-          <p class="tituloprincipal destacados">${{products[id].price}}</p>
-          <shop-qty-selector [qty]="quantity" [stock]="stock" (updateValue)="changeValue($event)"></shop-qty-selector>
+          <p class="tituloprincipal mb-0">{{product.name}}</p>
+          <p class="formato-descripcion tamamo-descripcion mb-0">{{product.type}} {{product.details}}</p>
+          <p class="formato-descripcion tamamo-descripcion-sub">{{product.description}}</p>
+          <p class="tituloprincipal destacados">${{product.price}}</p>
+          <p class="text-decoration-underline formato-descripcion tamamo-descripcion-sub">Precio Total: ${{totalPrice}}</p>
+
+          <div class="pb-3 col-md-3 col-lg-3 col-xl-2 d-flex">
+            <button class="btn btn-link px-2"
+                    (click)="remove()" (click)="getTotalPrice()">
+              <i class="fas fa-minus symbolColor"></i>
+            </button>
+
+            <input min="1" name="quantity" value="{{quantity}}" type="number"
+                   class="text-center quantity ng-untouched ng-pristine" disabled=""/>
+
+            <button class="btn btn-link px-2"
+                    (click)="add()" (click)="getTotalPrice()">
+              <i class="fas fa-plus symbolColor"></i>
+            </button>
+          </div>
+
+          <div class="container bot d-flex mt-2">
+          <a href="/" class="btn btn-lg me-2 botonUno">Volver</a>
           <a href="/cart" class="btn btn-lg botonUno">Añadir al Carrito</a>
+          </div>
+
         </div>
 
       </div>
