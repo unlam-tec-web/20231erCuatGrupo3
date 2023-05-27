@@ -234,3 +234,77 @@ input {
 .requisitos p{
 	font-weight: 400;
 }
+
+@media screen and (max-width:991px){
+
+.container{
+max-width: 400px;
+height: 650px;
+}
+.container.right-panel-active{
+	height: 1200px;
+	}
+
+.overlay{
+	top:0;
+	height: 500px;
+	position: absolute;
+	transform: translateY(90%);
+	width: 400px;
+	left: 0;
+}
+.overlay-panel{
+	width: 100%;
+}
+.container.right-panel-active .overlay{
+	height: 300px;
+	transform: translateX(0%);
+	}
+
+.overlay-container{
+	width: 100%;
+	left: 0;
+}
+ .overlay-right{
+	right: 0;
+	justify-content: start;
+	padding-top: 2em;
+ }
+ .overlay-left{
+	transform:translate(0%,200%);
+	justify-content: start;
+	padding-top: 2em;
+ }
+ .sign-in-container{
+	width: 100%;
+	height: 50%;
+	z-index: 110;
+ }
+ .sign-up-container{
+	width: 100%;
+	height: 50%;
+	z-index: 110;
+ }
+ .sign-in-container form{
+	justify-content: start;
+	padding-top: 4em;
+ }
+ .sign-up-container form{
+	padding-top: 12em;
+ }
+ .container.right-panel-active .sign-up-container {
+	transform: translateX(0);
+	padding-top:35em;
+}
+.container.right-panel-active .sign-in-container{
+	transform: translate(0%,-100%);
+}
+
+.container.right-panel-active .overlay-container{
+transform: translateX(0);
+height: 300px;
+}
+.container.right-panel-active .overlay-right{
+	transform: translate(0%,-100%);
+}
+}

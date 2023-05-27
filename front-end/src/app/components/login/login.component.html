@@ -1,4 +1,4 @@
-<div class="container my-3 m-auto" id="container" [ngClass]="rightPanelClass ? 'right-panel-active':''">
+<div class="container my-3 m-auto " id="container" [ngClass]="rightPanelClass ? 'right-panel-active':''">
     <div class="form-container sign-up-container">
       <form [formGroup]="registerForm">
         <h3 class="mt-5">Crear cuenta</h3>
@@ -45,7 +45,7 @@
     <div class="overlay-container" >
       <div class="overlay">
         <div class="overlay-panel overlay-left">
-          <h1>Bienvenido de vuelta !</h1>
+          <h1>Bienvenido de vuelta!</h1>
           <p>Para mantenerse conectado con nosotros, inicie sesión con su información personal</p>
           <button class="ghost" (click)="rightPanelClass = false; resetarFormulario()" id="signIn">Iniciar sesión</button>
         </div>
