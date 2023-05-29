@@ -21,3 +21,11 @@
 .logo{
     height: 80px;
 }
+.nombrePerfil{
+    cursor: pointer;
+}
+.fotoPerfil{
+    border-radius: 50%;
+    width: 45px;
+    margin-bottom: 0.5em;
+}

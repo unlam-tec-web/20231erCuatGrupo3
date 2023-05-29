@@ -1,7 +1,6 @@
-import {SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
-import { ViewportScroller } from '@angular/common';
-import { Component, HostListener, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
+
 
 @Component({
   selector: 'app-login',
@@ -9,37 +8,19 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  user?: SocialUser;
-  loggedIn: boolean | undefined;
+
   rightPanelClass : boolean = false;
   emailValidator  = new RegExp(/[A-Z0-9._+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i);
   
   //Expresion regular que verifica que contenga al menos un numero, una mayuscula, caracter especial
   passwordValidator =new RegExp(/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,}$/gm)
-
-  ocultarPanelIzquierdo: boolean = false;
   
-  constructor(private authService: SocialAuthService,
-    private fb:FormBuilder,private viewport : ViewportScroller ) {}
+  constructor(
+    private fb:FormBuilder) {}
 
-  ngOnInit() { 
-    this.authService.authState.subscribe((user) => {
-      this.user = user;
-      this.loggedIn = (user != null);
-      console.log(this.user);
-    });
-  }
-
-  @HostListener('window:resize', ['$event'])
-  onResize(event: any) {
-    this.mostrarPanelIzquierdo();
-  }
-  
-  mostrarPanelIzquierdo(){
-    const screenWidth = window.innerWidth
-    this.ocultarPanelIzquierdo = screenWidth <= 991;
-  }
-
+    ngOnInit(): void {
+      
+    }
   resetarFormulario(){
     this.registerForm.clearValidators()
     this.registerForm.reset();
