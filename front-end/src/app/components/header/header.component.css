@@ -2,9 +2,7 @@
     font-size: 2em;
     cursor: pointer;
 }
-.nav-menu{
-    border-top: 2px solid #353434;
-}
+
 .boton-buscar{
     color:#F75C03;
     border:1px solid #F75C03 ;
@@ -20,4 +18,26 @@
 
 .logo{
     height: 80px;
+}
+.nombrePerfil{
+    cursor: pointer;
+}
+.logout,.person{
+    color:#F75C03;
+}
+.navbar-toggler-icon{
+    filter: invert(100%);
+    }
+.botonMenu{
+    border:1px solid #F75C03;
+    outline: none;
+}
+.botonMenu:focus{
+    box-shadow: none;
+}
+
+@media screen and (min-width:991px){
+    .nav-menu{
+        border-top: 2px solid #353434;
+    }
 }

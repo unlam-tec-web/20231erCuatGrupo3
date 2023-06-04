@@ -1,21 +1,34 @@
-<div class="container my-3 m-auto" id="container" [ngClass]="rightPanelClass ? 'right-panel-active':''">
+<div class="container my-3 m-auto " id="container" [ngClass]="rightPanelClass ? 'right-panel-active':''">
     <div class="form-container sign-up-container">
       <form [formGroup]="registerForm">
         <h3 class="mt-5">Crear cuenta</h3>
         <div class="social-container">
-          <asl-google-signin-button type='standard' text='signup_with' width="220" size='medium'></asl-google-signin-button>
+          <asl-google-signin-button type='standard'  text='signup_with' width="220" size='medium'></asl-google-signin-button>
         </div>
         <span>O usá tu email para el registro.</span>
         <input type="text" placeholder="Nombre" formControlName="nombre" />
+        <input type="text" placeholder="Apellido" formControlName="apellido" />
+        <input type="text" placeholder="Direccion" formControlName="direccion" />
         <input type="email" placeholder="Email"  formControlName="emailRegistro" />
-        <p class="text-danger email" *ngIf="
+        <h6 class="text-danger email" *ngIf="
         registerForm.controls.emailRegistro.invalid
-        && (registerForm.controls.emailRegistro.dirty || registerForm.controls.emailRegistro.touched)">El email no cumple con el formato establecido.</p>
+        && (registerForm.controls.emailRegistro.dirty || registerForm.controls.emailRegistro.touched)">El email no cumple con el formato establecido.</h6>
         <input type="password" placeholder="Contraseña" formControlName="passwordRegistro"/>
-        <button class="btn registrar mt-2 mb-4" [disabled]="registerForm.invalid" >Registrar cuenta</button>
-
+        <h6 class="text-danger email" *ngIf="
+        registerForm.controls.passwordRegistro.invalid
+        && (registerForm.controls.passwordRegistro.dirty || registerForm.controls.passwordRegistro.touched)">La contraseña no cumple con los requisitos.</h6>
+        <div class="container-fluid text-start">
+        <ul class="requisitos">
+        <p>La contraseña debe cumplir con los siguientes requisitos</p>
+        <li class="text-secondary">Minimo 8 caracteres</li>
+        <li class="text-secondary">Al menos 1 numero</li>
+        <li class="text-secondary">Al menos 1 minuscula (a-z)</li>
+        <li class="text-secondary">Al menos 1 mayuscula (A-Z)</li>
+        <li class="text-secondary">Al menos 1 caracter especial (! @ # $)</li>
+      </ul>
+    </div>
+       <button class="btn registrar mt-4 mb-4" [disabled]="registerForm.invalid" >Registrar cuenta</button>
       </form>
-
     </div>
     <div class="form-container sign-in-container">
       <form [formGroup]="loginForm">
@@ -26,15 +39,13 @@
           <input type="text" class="form-control" placeholder="Email" formControlName="email">
           <input type="password" class="form-control" placeholder="Contraseña" formControlName="password" />
           <a routerLink="/recover-password">Olvidaste tu contraseña?</a>
-
         <button class="btn ingresar mt-2 mb-4" [disabled]="loginForm.invalid">Ingresar</button>
-
       </form>
     </div>
     <div class="overlay-container" >
       <div class="overlay">
         <div class="overlay-panel overlay-left">
-          <h1>Bienvenido de vuelta !</h1>
+          <h1>Bienvenido de vuelta!</h1>
           <p>Para mantenerse conectado con nosotros, inicie sesión con su información personal</p>
           <button class="ghost" (click)="rightPanelClass = false; resetarFormulario()" id="signIn">Iniciar sesión</button>
         </div>
