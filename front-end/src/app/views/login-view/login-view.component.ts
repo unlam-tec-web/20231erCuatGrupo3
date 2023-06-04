@@ -11,9 +11,7 @@ import { UserService } from 'src/app/services/user.service';
 export class LoginViewComponent implements OnInit{
 
   usuario: SocialUser | null =null  ;
-  constructor(private userServices:UserService,private router:Router){
-
-  }
+  constructor(private userServices:UserService,private router:Router){}
  
   ngOnInit() {
    
@@ -27,7 +25,6 @@ export class LoginViewComponent implements OnInit{
       })
       .catch((error) => {
         console.log('Error al obtener el usuario:', error);
-        this.router.navigateByUrl('/login');
       });
   }
  

@@ -15,18 +15,24 @@ export class UserService{
       const usuario: SocialUser = JSON.parse(usuarioString);
       return Promise.resolve(usuario);
     } else {
-      return new Promise((resolve, reject) => {
+      return new Promise((resolve) => {
         
-        //Tenemos que utilizar la promesa por un tema de que this.autService.authState es asincrono y no sabemos cuando devuelve el valor antes del redireccionamiento
+        //Tenemos que utilizar la promesa por un tema de que this.authService.authState es asincrono y no sabemos cuando devuelve el valor antes del redireccionamiento
         this.authService.authState.subscribe((user) => {
           if (user) {
             localStorage.setItem('USUARIO', JSON.stringify(user));
-            resolve(user);
-          } else {
-            reject(null);
+            return resolve(user);
           }
         });
       });
     }
+  }
+
+  borrarSesion(){
+
+    localStorage.removeItem('USUARIO');
+    const sesionCerrada=this.authService.signOut()
+    console.log(sesionCerrada)
+
   }
 }

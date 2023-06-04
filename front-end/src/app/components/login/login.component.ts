@@ -38,5 +38,5 @@ export class LoginComponent implements OnInit {
     emailRegistro:['',[Validators.required,Validators.pattern(this.emailValidator)]],
     passwordRegistro:['',[Validators.required,Validators.pattern(this.passwordValidator)]],
   });
-
+ 
 }

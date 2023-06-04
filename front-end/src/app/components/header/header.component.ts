@@ -1,7 +1,8 @@
-import { SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
+import { SocialUser } from '@abacritt/angularx-social-login';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
+
 
 
 @Component({
@@ -13,13 +14,22 @@ export class HeaderComponent implements OnInit {
 
 user: SocialUser | null =null  ;
 loggedIn: boolean = false;
+constructor(private userServices:UserService,private router:Router
+  ){ }
 
-constructor(private userServices:UserService){ }
-
-async ngOnInit() {
-this.user = await this.userServices.obtenerUsuarioDeLaSesion();
-this.loggedIn = this.user !=null 
-
+ngOnInit() {
+this.obtenerUsuario();
 }
 
+async obtenerUsuario(){
+  this.user = await this.userServices.obtenerUsuarioDeLaSesion();
+  this.loggedIn = this.user !=null 
+}
+
+borrarSesion(){
+  this.userServices.borrarSesion();
+  this.loggedIn=false;
+  this.user=null;
+  this.router.navigateByUrl('/')
+}
 }
