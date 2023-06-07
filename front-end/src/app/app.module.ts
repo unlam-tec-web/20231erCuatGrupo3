@@ -24,7 +24,6 @@ import {MatButtonModule} from '@angular/material/button';
 
 
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +38,7 @@ import {MatButtonModule} from '@angular/material/button';
     RecoverPasswordViewComponent,
     RecoverPasswordComponent,
     CartViewComponent,
-    CategoryViewComponent,
+    CategoryViewComponent
   ],
   imports: [
     BrowserModule,

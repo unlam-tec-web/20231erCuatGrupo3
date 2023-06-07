@@ -7,5 +7,4 @@ export interface Product {
   brand: string
   price: number
   img: string
-  cantidad: number
 }
