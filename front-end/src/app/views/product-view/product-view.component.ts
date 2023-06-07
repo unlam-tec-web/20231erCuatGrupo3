@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {FormControl} from "@angular/forms";
 import {ProductService} from "../../services/product.service";
-import {Product} from "../../../assets/interfaces/product.interface";
+import {Product} from '../../../assets/interfaces/product.interface';
 
 @Component({
   selector: 'app-product-view',
