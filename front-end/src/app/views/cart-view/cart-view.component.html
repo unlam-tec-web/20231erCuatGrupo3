@@ -1,6 +1,11 @@
 <app-header></app-header>
-
-<section class="h-100 h-custom">
+<div *ngIf="cartService.obtenerCarrito().length == 0 ">
+  <div class="text-center m-5">
+      <h3>Tu carrito esta vac&iacute;o.</h3>
+      <a routerLink="/" class="text-decoration-none btn btn-secondary">Empieza a comprar</a>
+  </div>
+</div>
+<section class="h-100 h-custom" *ngIf="cartService.obtenerCarrito().length != 0" >
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-12">
