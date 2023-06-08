@@ -1,10 +1,10 @@
+
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
 import { FormControl } from "@angular/forms";
 import { ProductService } from "../../services/product.service";
 import { CartService } from 'src/app/services/cart.service';
 import { Product } from '../../../assets/interfaces/product.interface';
-
 @Component({
   selector: 'app-product-view',
   templateUrl: './product-view.component.html',
@@ -14,6 +14,8 @@ import { Product } from '../../../assets/interfaces/product.interface';
 export class ProductViewComponent implements OnInit{
 
   quantity : number =1;
+  stock : number =10;
+  quantityForm = new FormControl(1);
   totalPrice! : number;
   price! : number;
   product! : Product;

@@ -24,7 +24,6 @@ import { FormsModule } from '@angular/forms';
 
 
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +38,7 @@ import { FormsModule } from '@angular/forms';
     RecoverPasswordViewComponent,
     RecoverPasswordComponent,
     CartViewComponent,
-    CategoryViewComponent,
+    CategoryViewComponent
   ],
   imports: [
     BrowserModule,
