@@ -1,4 +1,4 @@
-export interface Product {
+export interface ProductosCart {
   id: number
   type: string
   name: string
@@ -7,4 +7,5 @@ export interface Product {
   brand: string
   price: number
   img: string
+  cantidad: number
 }

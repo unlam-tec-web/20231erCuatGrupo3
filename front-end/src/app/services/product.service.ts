@@ -1,4 +1,4 @@
-import {Product} from "../../intefaces/product.interface";
+import {Product} from '../../assets/interfaces/product.interface';
 import {Injectable} from "@angular/core";
 
 @Injectable({
