@@ -5,7 +5,7 @@
             <h5 class="card-title text-center subtitulo">{{name}}</h5>
             <h4 class="card-text text-center mb-4 mt-2 precio">${{price}}</h4>
             <div class="container bot d-flex justify-content-around mt-2">
-                <a routerLink="/cart" class="btn botonUno text-light">Agregar al carro</a>
+              <button class="btn botonUno" (click)="agregarAlCarrito(id)">Agregar al carrito</button>
                 <a (click)='viewProduct(id);' class="btn botonUno">Ver más</a>
             </div>
         </div>

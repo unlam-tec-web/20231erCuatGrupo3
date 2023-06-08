@@ -6,7 +6,7 @@
         <a class="tituloLogo mt-3" routerLink="/"><h1 class="tituloLogo text-center">DRINKING TIME</h1></a>
       </div>
     </div>
-  
+
     <div class="col-lg-4 pt-4">
       <form class="d-flex mb-4" role="search">
         <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
@@ -22,7 +22,7 @@
          <i class="bi bi-person text-light cuenta d-none d-lg-inline" ></i>
        </a>
        </ng-container>
-      
+
        <ng-container *ngIf="loggedIn">
       <button mat-button [matMenuTriggerFor]="menu" class="text-light d-none d-lg-inline">{{user?.name}}
         <span><mat-icon aria-hidden="false" class="text-light" aria-label="Example home icon" fontIcon="arrow_drop_down"></mat-icon></span>
@@ -34,7 +34,7 @@
         <button mat-menu-item (click)="borrarSesion()"><mat-icon aria-hidden="false" class="logout" aria-label="Example home icon" fontIcon="logout"></mat-icon>
           Cerrar sesión</button>
       </mat-menu>
-    
+
       <a routerLink="/cart"> <i class="bi bi-cart mx-4 text-light carrito d-none d-lg-inline"></i></a>
     </div>
 
@@ -47,7 +47,7 @@
           <a class="nav-link text-light" aria-current="page" href="#">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-light" href="#">Tienda</a>
+          <a class="nav-link text-light" href="#categorias">Tienda</a>
         </li>
 
         <li class="nav-item" *ngIf="loggedIn; else notLogged">
