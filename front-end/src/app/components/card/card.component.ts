@@ -13,13 +13,14 @@ export class CardComponent {
 @Input() price : any = '';
 @Input() name : any = '';
 @Input() id : any = '';
-  constructor( protected router:Router, public cartService: CartService, public productoService: ProductService){
+  constructor( protected router:Router, public cartService: CartService, public productService: ProductService){
 
   }
 
   agregarAlCarrito(id: number) {
 
-    this.cartService.agregarAlCarrito(this.productoService.getProductById(id));
+    this.cartService.agregarAlCarrito(this.productService.getProductById(id));
+    this.router.navigate(['/cart']);
   }
 
 

@@ -24,6 +24,7 @@ export class CartService {
       cantidad: 0
     };
 
+
     // Verifica si el producto ya está en el carrito
     const productoExistente = this.cart.find(p => p.id === newProducto.id);
 

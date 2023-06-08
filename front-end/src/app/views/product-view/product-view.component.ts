@@ -1,8 +1,9 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from "@angular/router";
-import {FormControl} from "@angular/forms";
-import {ProductService} from "../../services/product.service";
-import {Product} from '../../../assets/interfaces/product.interface';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from "@angular/router";
+import { FormControl } from "@angular/forms";
+import { ProductService } from "../../services/product.service";
+import { CartService } from 'src/app/services/cart.service';
+import { Product } from '../../../assets/interfaces/product.interface';
 
 @Component({
   selector: 'app-product-view',
@@ -13,8 +14,6 @@ import {Product} from '../../../assets/interfaces/product.interface';
 export class ProductViewComponent implements OnInit{
 
   quantity : number =1;
-  stock : number =10;
-  quantityForm = new FormControl(1);
   totalPrice! : number;
   price! : number;
   product! : Product;
@@ -22,7 +21,9 @@ export class ProductViewComponent implements OnInit{
 
   constructor(
     private route:ActivatedRoute,
-    private productService:ProductService)
+    protected router:Router,
+    private productService:ProductService,
+    private cartService:CartService)
   {}
 
   ngOnInit(): void {
@@ -39,6 +40,19 @@ export class ProductViewComponent implements OnInit{
   setTotalPrice(){
     this.totalPrice= this.product.price;
   }
+
+  agregarAlCarrito(id: number) {
+
+    this.cartService.agregarAlCarrito(this.productService.getProductById(id));
+    this.router.navigate(['/cart']);
+  }
+
+  addToCartWithQuantity(id: number,quantity: number) {
+
+   // this.cartService.agregarAlCarrito(this.productService.getProductById(id),quantity);
+    this.router.navigate(['/cart']);
+  }
+
   ngOnDestroy():void{
     this.sub.unsubscribe();
   }
