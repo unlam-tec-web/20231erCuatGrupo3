@@ -93,7 +93,7 @@ export class CartService {
   incrementQuantity(producto: ProductosCart) : void {
     const productoExistente = this.cart.find(p => p.id === producto.id);
     if (productoExistente) {
-    if (producto.cantidad > 1) {
+    if (producto.cantidad >= 1) {
       producto.cantidad++;
     }
   }
