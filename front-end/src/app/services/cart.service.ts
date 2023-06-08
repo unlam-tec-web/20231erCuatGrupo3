@@ -29,7 +29,7 @@ export class CartService {
 
     if (productoExistente) {
       // Si el producto ya está en el carrito, actualiza su cantidad
-      productoExistente.cantidad++;
+      productoExistente.cantidad= quantity + productoExistente.cantidad;
     } else {
       // Si el producto no está en el carrito, agrégalo
       this.cart.push(newProducto);
