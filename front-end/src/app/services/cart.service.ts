@@ -11,7 +11,7 @@ export class CartService {
 
   constructor() { }
 
-  agregarAlCarrito(producto: Product): void {
+  agregarAlCarrito(producto: Product, quantity:number): void {
     const newProducto: ProductosCart = {
       id: producto.id,
       type: producto.type,
@@ -21,9 +21,8 @@ export class CartService {
       brand: producto.brand,
       price: producto.price,
       img: producto.img,
-      cantidad: 0
+      cantidad: quantity
     };
-
 
     // Verifica si el producto ya está en el carrito
     const productoExistente = this.cart.find(p => p.id === newProducto.id);
@@ -33,7 +32,6 @@ export class CartService {
       productoExistente.cantidad++;
     } else {
       // Si el producto no está en el carrito, agrégalo
-      newProducto.cantidad = 1;
       this.cart.push(newProducto);
     }
   }

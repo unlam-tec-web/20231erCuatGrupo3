@@ -41,15 +41,9 @@ export class ProductViewComponent implements OnInit{
     this.totalPrice= this.product.price;
   }
 
-  agregarAlCarrito(id: number) {
+  agregarAlCarrito(id: number, quantity:number) {
 
-    this.cartService.agregarAlCarrito(this.productService.getProductById(id));
-    this.router.navigate(['/cart']);
-  }
-
-  addToCartWithQuantity(id: number,quantity: number) {
-
-   // this.cartService.agregarAlCarrito(this.productService.getProductById(id),quantity);
+    this.cartService.agregarAlCarrito(this.productService.getProductById(id),quantity);
     this.router.navigate(['/cart']);
   }
 
