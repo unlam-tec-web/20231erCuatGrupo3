@@ -1,48 +1,48 @@
-{
-    "Products":[
+
+export const products: any[] = [
     {
-      "id":1,
-      "type":"Cerveza",
-      "category":1,
-      "name":"Heineken 6x 355cc Sin Alcohol",
-      "details":"Rubia",
-      "description":"Cerveza Heineken Sin Alcohol 0.0% Lata 355ml Pack x6",
-      "brand":"Heineken",
-      "price":3000,
-      "img":"../../../assets/img/heineken.jpg"
+        "id":1,
+        "type":"Cerveza",
+        "category":1,
+        "name":"Heineken 6x 355cc Sin Alcohol",
+        "details":"Rubia",
+        "description":"Cerveza Heineken Sin Alcohol 0.0% Lata 355ml Pack x6",
+        "brand":"Heineken",
+        "price":3000,
+        "img":"../../../assets/img/heineken.jpg"
     },
     {
-      "id":2,
-      "type":"Cerveza",
-      "category":1,
-      "name":"Andes Origen Negra 473cc",
-      "details":"Negra",
-      "description":"Lata de cerveza, Andes Origen Negra de 473cc.",
-      "brand":"Andes",
-      "price":369,
-      "img":"../../../assets/img/ANDES.jpg"
+        "id":2,
+        "type":"Cerveza",
+        "category":1,
+        "name":"Andes Origen Negra 473cc",
+        "details":"Negra",
+        "description":"Lata de cerveza, Andes Origen Negra de 473cc.",
+        "brand":"Andes",
+        "price":369,
+        "img":"../../../assets/img/ANDES.jpg"
     },
     {
-      "id":3,
-      "type":"Cerveza",
-      "category":1,
-      "name":"Miller 473cc",
-      "details":"Rubia",
-      "description":"Lata de cerveza, Miller de 473cc.",
-      "brand":"Miller",
-      "price":344,
-      "img":"../../../assets/img/MILLER-473-.png"
+        "id":3,
+        "type":"Cerveza",
+        "category":1,
+        "name":"Miller 473cc",
+        "details":"Rubia",
+        "description":"Lata de cerveza, Miller de 473cc.",
+        "brand":"Miller",
+        "price":344,
+        "img":"../../../assets/img/MILLER-473-.png"
     },
     {
-      "id":4,
-      "type":"Cerveza",
-      "category":1,
-      "name":"Budweiser 410cc",
-      "details":"Rubia",
-      "description":"Cerveza Budweiser en lata de 410cc.",
-      "brand":"Budweiser",
-      "price":260,
-      "img":"../../../assets/img/bud-78.png"
+        "id":4,
+        "type":"Cerveza",
+        "category":1,
+        "name":"Budweiser 410cc",
+        "details":"Rubia",
+        "description":"Cerveza Budweiser en lata de 410cc.",
+        "brand":"Budweiser",
+        "price":260,
+        "img":"../../../assets/img/bud-78.png"
     },
     {
         "id":5,
@@ -264,22 +264,23 @@
         "price":1258,
         "img":"../../../assets/img/Alma-Mora-Malbec.jpg"
     }
-  ],
-  "categories":[
+];
+
+export const categories : any [] =[
     {
-      "id":1,
-      "type":"Cervezas",
-      "img": "../../../assets/img/categoriacerveza.jpg"
+        "id":1,
+        "type":"Cervezas",
+        "img": "../../../assets/img/categoriacerveza.jpg"
     },
     {
-      "id":2,
-      "type":"Vinos",
-      "img":"../../../assets/img/categoriavino.jpg"
+        "id":2,
+        "type":"Vinos",
+        "img":"../../../assets/img/categoriavino.jpg"
     },
     {
-      "id":3,
-      "type":"Whiskys",
-      "img":"../../../assets/img/categoriawhiskey.jpg"
+        "id":3,
+        "type":"Whiskys",
+        "img":"../../../assets/img/categoriawhiskey.jpg"
     }
-  ]
-}
+]
+
