@@ -1,15 +1,17 @@
 import { Injectable } from '@angular/core';
 import { ProductosCart } from '../../assets/interfaces/productosCart.interface';
 import { Product } from 'src/assets/interfaces/product.interface';
+import { BehaviorSubject } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
+  public productList = new BehaviorSubject<any>([]);
 
   private cart: ProductosCart[] = [];
-
-  constructor() { }
+  constructor(private _snackBar: MatSnackBar) { }
 
   agregarAlCarrito(producto: Product, quantity:number): void {
     const newProducto: ProductosCart = {
@@ -33,7 +35,10 @@ export class CartService {
     } else {
       // Si el producto no está en el carrito, agrégalo
       this.cart.push(newProducto);
-    }
+      this.productList.next(this.cart);
+      this._snackBar.open('¡Producto agregado al carrito!', 'Ok', { duration: 3000 });
+
+        }
   }
 
 
@@ -43,6 +48,10 @@ export class CartService {
       const index = this.cart.findIndex(p => p.id === producto.id);
       this.cart.splice(index, 1);
     }
+    this.productList.next(this.cart);
+    this._snackBar.open('Producto eliminado del carrito.', 'Ok', {
+      duration: 3000,
+    });
   }
 
 
@@ -53,6 +62,8 @@ export class CartService {
       // Si el producto ya está en el carrito, actualiza su cantidad
       producto.cantidad = cantidad;
       this.cart.push(producto);
+      this.productList.next(producto);
+      
     }
   }
   obtenerSubTotal(): number {
@@ -97,8 +108,11 @@ export class CartService {
     }
   }
 }
-
-
-
+  getProductosEnCarrito(){
+  return this.productList.asObservable();
 }
-
+  vaciarCarrito(){
+  this.cart = []
+  this.productList.next(this.cart);
+}
+}

@@ -20,7 +20,7 @@ export class CardComponent {
   agregarAlCarrito(id: number) {
 
     this.cartService.agregarAlCarrito(this.productService.getProductById(id),1);
-    this.router.navigate(['/cart']);
+    //this.router.navigate(['/cart']);
   }
 
 
