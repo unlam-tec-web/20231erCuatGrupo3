@@ -35,7 +35,9 @@ export class ProductViewComponent implements OnInit{
 
   private showProductToView() {
     this.sub = this.route.params.subscribe(({id}) => {
-      this.product = this.productService.getProductById(id);
+      this.productService.getProductById(id).subscribe(serverProduct => {
+        this.product = serverProduct;
+      });
     });
   }
 
@@ -45,7 +47,7 @@ export class ProductViewComponent implements OnInit{
 
   agregarAlCarrito(id: number, quantity:number) {
 
-    this.cartService.agregarAlCarrito(this.productService.getProductById(id),quantity);
+    this.cartService.agregarAlCarrito(this.product,quantity);
     this.router.navigate(['/cart']);
   }
 
