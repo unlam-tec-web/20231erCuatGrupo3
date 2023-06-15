@@ -1,10 +1,10 @@
 <app-header></app-header>
 <main class="contenido-principal">
 
-  <h2 class="text-center mt-4 mb-5 tituloprincipal destacados">{{name}}</h2>
+  <h2 class="text-center mt-4 mb-5 tituloprincipal destacados">{{category}}</h2>
 
   <div class="container d-flex flex-wrap justify-content-center">
-    <app-card class="mb-4" *ngFor="let product of findByName(products,name)" [img]="product.img" [name]="product.name" [price]="product.price" ></app-card>
+    <app-card class="mb-4" *ngFor="let product of products" [img]="product.img" [id]="product.id" [name]="product.name" [price]="product.price" ></app-card>
   </div>
 
 </main>
