@@ -2,7 +2,7 @@
 export const products: any[] = [
     {
         "id":1,
-        "type":"Cerveza",
+        "type":"Cervezas",
         "category":1,
         "name":"Heineken 6x 355cc Sin Alcohol",
         "details":"Rubia",
@@ -13,7 +13,7 @@ export const products: any[] = [
     },
     {
         "id":2,
-        "type":"Cerveza",
+        "type":"Cervezas",
         "category":1,
         "name":"Andes Origen Negra 473cc",
         "details":"Negra",
@@ -24,7 +24,7 @@ export const products: any[] = [
     },
     {
         "id":3,
-        "type":"Cerveza",
+        "type":"Cervezas",
         "category":1,
         "name":"Miller 473cc",
         "details":"Rubia",
@@ -35,7 +35,7 @@ export const products: any[] = [
     },
     {
         "id":4,
-        "type":"Cerveza",
+        "type":"Cervezas",
         "category":1,
         "name":"Budweiser 410cc",
         "details":"Rubia",
@@ -46,7 +46,7 @@ export const products: any[] = [
     },
     {
         "id":5,
-        "type":"Cerveza",
+        "type":"Cervezas",
         "category":1,
         "name":"Quilmes 473cc",
         "details":"Rubia",
@@ -57,7 +57,7 @@ export const products: any[] = [
     },
     {
         "id":6,
-        "type":"Cerveza",
+        "type":"Cervezas",
         "category":1,
         "name":"Quilmes 340cc",
         "details":"Rubia",
@@ -68,7 +68,7 @@ export const products: any[] = [
     },
     {
         "id":7,
-        "type":"Cerveza",
+        "type":"Cervezas",
         "category":1,
         "name":"Stella Noire",
         "details":"Negra",
@@ -79,7 +79,7 @@ export const products: any[] = [
     },
     {
         "id":8,
-        "type":"Cerveza",
+        "type":"Cervezas",
         "category":1,
         "name":"Stella Artois Lata 269cc",
         "details":"Rubia",
@@ -90,7 +90,7 @@ export const products: any[] = [
     },
     {
         "id":9,
-        "type":"Whisky",
+        "type":"Whiskys",
         "category":3,
         "name":"Johnnie Walker Blue Label",
         "details":"Importado",
@@ -101,7 +101,7 @@ export const products: any[] = [
     },
     {
         "id":10,
-        "type":"Whisky",
+        "type":"Whiskys",
         "category":3,
         "name":"Johnnie Walker Black Label 750cc",
         "details":"Importado",
@@ -112,7 +112,7 @@ export const products: any[] = [
     },
     {
         "id":11,
-        "type":"Whisky",
+        "type":"Whiskys",
         "category":3,
         "name":"Jack Daniel's Honey 750cc",
         "details":"Importado",
@@ -123,7 +123,7 @@ export const products: any[] = [
     },
     {
         "id":12,
-        "type":"Whisky",
+        "type":"Whiskys",
         "category":3,
         "name":"Jack Daniel's 750cc",
         "details":"Importado",
@@ -134,7 +134,7 @@ export const products: any[] = [
     },
     {
         "id":13,
-        "type":"Whisky",
+        "type":"Whiskys",
         "category":3,
         "name":"Grants Ale Cask Edition",
         "details":"Importado",
@@ -145,7 +145,7 @@ export const products: any[] = [
     },
     {
         "id":14,
-        "type":"Whisky",
+        "type":"Whiskys",
         "category":3,
         "name":"Ballantine 7 Años 700cc",
         "details":"Importado",
@@ -156,7 +156,7 @@ export const products: any[] = [
     },
     {
         "id":15,
-        "type":"Whisky",
+        "type":"Whiskys",
         "category":3,
         "name":"Aberlour Scotch Whisky",
         "details":"Importado",
@@ -167,7 +167,7 @@ export const products: any[] = [
     },
     {
         "id":16,
-        "type":"Whisky",
+        "type":"Whiskys",
         "category":3,
         "name":"Blenders x 1 Litro",
         "details":"Nacional",

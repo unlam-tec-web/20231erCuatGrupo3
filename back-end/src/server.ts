@@ -25,9 +25,9 @@ app.get("/api/products/search/:searchedProduct", (req,res) => {
     res.send(product);
 })
 
-app.get("/api/products/category/:searchedCategory", (req,res) => {
-    const searchedCategory = req.params.searchedCategory;
-    const product = products.filter(p => p.type?.includes(searchedCategory));
+app.get("/api/products/category/:searchedCategoryId", (req,res) => {
+    const searchedCategoryId = req.params.searchedCategoryId;
+    const product = products.filter(p => p.category == searchedCategoryId);
 
     res.send(product);
 })

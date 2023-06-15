@@ -1,5 +1,7 @@
 import {Component, Input} from '@angular/core';
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
+import {Product} from "../../../assets/interfaces/product.interface";
+import {ProductService} from "../../services/product.service";
 
 @Component({
   selector: 'app-thumbnails',
@@ -8,14 +10,14 @@ import {Router} from "@angular/router";
 })
 export class ThumbnailsComponent {
   @Input() img : any = '';
-  @Input() price : any = '';
+  @Input() id : any = '';
   @Input() name : any = '';
 
-  constructor( protected router:Router){
+  constructor(
+    protected router:Router
+  ){}
 
-  }
-
-  viewCategory(name : string){
-    this.router.navigate(['/category',name])
+  viewCategory(id : number, name : string){
+    this.router.navigate(['/category',id])
   }
 }

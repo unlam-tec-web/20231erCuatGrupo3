@@ -12,7 +12,7 @@ import {Observable} from "rxjs";
 export class HomeViewComponent {
 
   categories: Category [] = [];
-  products :Product []= [];
+  products :Product [] = [];
 
   constructor(private productService: ProductService, activatedRoute: ActivatedRoute){
     let ProductsObservables:Observable<Product[]>;

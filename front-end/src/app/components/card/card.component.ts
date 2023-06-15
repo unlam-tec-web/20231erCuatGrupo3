@@ -30,7 +30,6 @@ export class CardComponent {
 
   }
 
-
   viewProduct(id:number){
     this.router.navigate(['/product',id])
   }
