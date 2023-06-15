@@ -13,7 +13,7 @@
                     <h1 class="fw-bold mb-0 tituloprincipal">Mi carrito</h1>
                   </div>
 
-                  <div *ngFor="let producto of cartService.obtenerCarrito()">
+                  <div *ngFor="let producto of cartService.getCart()">
                     <hr class="my-4">
                     <div class="row mb-4 d-flex justify-content-between align-items-center">
 
@@ -28,7 +28,7 @@
                       <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
                         <button class="btn btn-link px-2" (click)="cartService.decrementQuantity(producto)"><i class="fas fa-minus"></i></button>
 
-                        <input id="form1" min="1" name="quantity" [(ngModel)]="producto.cantidad" class="form-control form-control-sm" (ngModelChange)="onQuantityChange(producto.id)" />
+                        <input id="form1" min="1" name="quantity" [(ngModel)]="producto.quantity" class="form-control form-control-sm" (ngModelChange)="onQuantityChange(producto.id)" />
 
                         <button class="btn btn-link px-2" (click)="incrementQuantity(producto)"><i class="fas fa-plus"></i></button>
                       </div>
@@ -40,7 +40,7 @@
                         <h6 class="mb-0">$ {{producto.price}}</h6>
                       </div>
                       <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                        <a (click)="eliminarDelCarrito(producto)" class="text-muted"><i class="fas fa-times"></i></a>
+                        <a (click)="removeProductFromCart(producto)" class="text-muted"><i class="fas fa-times"></i></a>
                       </div>
                     </div>
                   </div>
@@ -63,7 +63,7 @@
 
                   <div class="d-flex justify-content-between mb-4">
                     <h5 class="text-uppercase">Subtotal</h5>
-                    <h5>$ {{ cartService.obtenerSubTotal() }}</h5>
+                    <h5>$ {{ cartService.getSubtotal() }}</h5>
                   </div>
 
                   <div class="d-flex justify-content-between mb-4">

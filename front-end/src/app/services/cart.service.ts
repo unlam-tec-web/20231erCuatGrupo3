@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ProductosCart } from '../../assets/interfaces/productosCart.interface';
+import { Cart } from '../../assets/interfaces/cart.interface';
 import { Product } from 'src/assets/interfaces/product.interface';
 
 @Injectable({
@@ -7,93 +7,92 @@ import { Product } from 'src/assets/interfaces/product.interface';
 })
 export class CartService {
 
-  private cart: ProductosCart[] = [];
+  private cart: Cart[] = [];
 
   constructor() { }
 
-  agregarAlCarrito(producto: Product, quantity:number): void {
-    const newProducto: ProductosCart = {
-      id: producto.id,
-      type: producto.type,
-      name: producto.name,
-      details: producto.details,
-      description: producto.description,
-      brand: producto.brand,
-      price: producto.price,
-      img: producto.img,
-      cantidad: quantity
+  agregarAlCarrito(product: Product, quantity:number): void {
+    const newCart: Cart = {
+      id: product.id,
+      type: product.type,
+      name: product.name,
+      details: product.details,
+      description: product.description,
+      brand: product.brand,
+      price: product.price,
+      img: product.img,
+      quantity: quantity,
+      totalPrice: quantity * product.price
     };
 
     // Verifica si el producto ya está en el carrito
-    const productoExistente = this.cart.find(p => p.id === newProducto.id);
+    const productInCart = this.cart.find(p => p.id === newCart.id);
 
-    if (productoExistente) {
+    if (productInCart) {
       // Si el producto ya está en el carrito, actualiza su cantidad
-      productoExistente.cantidad= quantity + productoExistente.cantidad;
+      productInCart.quantity= quantity + productInCart.quantity;
     } else {
       // Si el producto no está en el carrito, agrégalo
-      this.cart.push(newProducto);
+      this.cart.push(newCart);
     }
   }
 
 
-  eliminarDelCarrito(producto: ProductosCart): void {
-    const productoExistente = this.cart.find(p => p.id === producto.id);
-    if (productoExistente) {
+  removeProductFromCart(producto: Cart): void {
+    const productInCart = this.cart.find(p => p.id === producto.id);
+    if (productInCart) {
       const index = this.cart.findIndex(p => p.id === producto.id);
       this.cart.splice(index, 1);
     }
   }
 
 
-  actualizarCantidad(producto: ProductosCart, cantidad: number): void {
-    const productoExistente = this.cart.find(p => p.id === producto.id);
+  actualizarCantidad(producto: Cart, cantidad: number): void {
+    const productInCart = this.cart.find(p => p.id === producto.id);
 
-    if (productoExistente) {
+    if (productInCart) {
       // Si el producto ya está en el carrito, actualiza su cantidad
-      producto.cantidad = cantidad;
+      producto.quantity = cantidad;
       this.cart.push(producto);
     }
   }
-  obtenerSubTotal(): number {
+  getSubtotal(): number {
     let subtotal = 0;
-    this.cart.forEach(producto => {
-      subtotal += producto.price * producto.cantidad;
+    this.cart.forEach(product => {
+      subtotal += product.price * product.quantity;
     });
     return subtotal;
   }
 
   obtenerTotal(): number {
     let total = 0;
-    let envio = 400;
-    this.cart.forEach(producto => {
-      const subtotal = producto.price * producto.cantidad;
+    let deliveryCost = 400;
+    this.cart.forEach(product => {
+      const subtotal = product.price * product.quantity;
       total += subtotal;
     });
 
-    return total+envio;
+    return total+deliveryCost;
   }
 
-  obtenerCarrito(): ProductosCart[] {
-    // Devuelve los productos en el carrito
+  getCart(): Cart[] {
     return this.cart;
-
   }
 
-  decrementQuantity(producto: ProductosCart) : void {
-    const productoExistente = this.cart.find(p => p.id === producto.id);
-    if (productoExistente) {
-    if (producto.cantidad > 1) {
-      producto.cantidad--;
+  decrementQuantity(product: Cart) : void {
+    const productInCart = this.cart.find(p => p.id === product.id);
+    if (productInCart) {
+    if (product.quantity > 1) {
+      product.quantity--;
     }
    }
   }
 
-  incrementQuantity(producto: ProductosCart) : void {
-    const productoExistente = this.cart.find(p => p.id === producto.id);
-    if (productoExistente) {
-    if (producto.cantidad >= 1) {
-      producto.cantidad++;
+  incrementQuantity(product: Cart) : void {
+    const productInCart = this.cart.find(p => p.id === product.id);
+    if (productInCart) {
+    if (product.quantity >= 1) {
+      product.quantity++;
     }
   }
 }

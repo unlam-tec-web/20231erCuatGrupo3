@@ -30,13 +30,13 @@ export class ProductViewComponent implements OnInit{
 
   ngOnInit(): void {
     this.showProductToView();
-    this.setTotalPrice();
   }
 
   private showProductToView() {
     this.sub = this.route.params.subscribe(({id}) => {
       this.productService.getProductById(id).subscribe(serverProduct => {
         this.product = serverProduct;
+        this.setTotalPrice();
       });
     });
   }
@@ -45,19 +45,12 @@ export class ProductViewComponent implements OnInit{
     this.totalPrice= this.product.price;
   }
 
-  agregarAlCarrito(id: number, quantity:number) {
+  agregarAlCarrito(quantity:number) {
 
     this.cartService.agregarAlCarrito(this.product,quantity);
     this.router.navigate(['/cart']);
   }
 
-  ngOnDestroy():void{
-    this.sub.unsubscribe();
-  }
-
-  changeValue($event: any) {
-    console.log($event);
-  }
   getTotalPrice(){
     this.totalPrice = this.quantity * this.product.price;
   }

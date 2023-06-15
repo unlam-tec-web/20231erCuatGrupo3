@@ -24,10 +24,10 @@ export class CardComponent {
 
     this.productService.getProductById(id).subscribe(serverProduct => {
       this.product = serverProduct;
+      this.cartService.agregarAlCarrito(this.product,1);
+      this.router.navigate(['/cart']);
     });
 
-    this.cartService.agregarAlCarrito(this.product,1);
-    this.router.navigate(['/cart']);
   }
 
 
