@@ -20,7 +20,7 @@ app.get("/api/products/search/:searchedProduct", (req,res) => {
     const searchedProduct = req.params.searchedProduct;
     const product = products
         .filter(product => product.name.toLowerCase()
-        .includes(searchedProduct.toLowerCase()));
+        .includes(searchedProduct.toLowerCase())).slice(0, 5);
 
     res.send(product);
 })
