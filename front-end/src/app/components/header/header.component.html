@@ -1,69 +1,94 @@
 <header>
-<nav class="navbar navbar-expand-lg bg-dark">
-  <div class="container-fluid d-flex flex-column flex-lg-row flex-wrap">
-    <div class="col-lg-4">
-      <div class="contenedor-logo d-flex justify-content-center">
-        <a class="tituloLogo mt-3" routerLink="/"><h1 class="tituloLogo text-center">DRINKING TIME</h1></a>
+  <nav class="navbar navbar-expand-lg bg-dark">
+    <div class="container-fluid d-flex flex-column flex-lg-row flex-wrap">
+      <div class="col-lg-4">
+        <div class="contenedor-logo d-flex justify-content-center">
+          <a class="tituloLogo mt-3" routerLink="/">
+            <h1 class="tituloLogo text-center">DRINKING TIME</h1>
+          </a>
+        </div>
+      </div>
+
+      <div class="col-lg-4 pt-4">
+        <form class="d-flex mb-4" role="search" autocomplete="off">
+          <div class="position-relative d-flex w-100">
+            <input class="form-control me-2" (keyup)="obtenerProducto()" [(ngModel)]="nombreDelProducto" type="search"
+              name="nombreDelProducto" placeholder="Buscar" aria-label="Search">
+            <button class="btn boton-buscar" type="submit">Buscar</button>
+      
+            <div class="autocomplete-results flex-grow-0" *ngIf="searchedProducts.length > 0">
+              <div class="products d-flex flex-column">
+                <div class="cartas" *ngFor="let product of searchedProducts">
+                  <div class="product-item" routerLink="/product/{{product.id}}">
+                    <img [src]="product.img" alt="Producto" class="product-image">
+                    <div class="product-details">
+                      <p class="product-name">{{ product.name }}</p>
+                      <p class="product-price text-start">${{ product.price }}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      
+     
+      <div class="col-lg-1"></div>
+      <div class="col-lg-3">
+
+        <ng-container *ngIf="!loggedIn;">
+          <a routerLink="/login">
+            <i class="bi bi-person text-light cuenta d-none d-lg-inline"></i>
+          </a>
+        </ng-container>
+
+        <ng-container *ngIf="loggedIn">
+          <button mat-button [matMenuTriggerFor]="menu" class="text-light d-none d-lg-inline">{{user?.name}}
+            <span><mat-icon aria-hidden="false" class="text-light" aria-label="Example home icon"
+                fontIcon="arrow_drop_down"></mat-icon></span>
+          </button>
+        </ng-container>
+
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item><mat-icon aria-hidden="false" class="person" aria-label="Example home icon"
+              fontIcon="person"></mat-icon>Mi cuenta</button>
+          <button mat-menu-item (click)="borrarSesion()"><mat-icon aria-hidden="false" class="logout"
+              aria-label="Example home icon" fontIcon="logout"></mat-icon>
+            Cerrar sesión</button>
+        </mat-menu>
+
+        <a routerLink="/cart"> <i class="bi bi-cart mx-4 text-light carrito d-none d-lg-inline"></i></a>
+      </div>
+
+      <button class="navbar-toggler align-self-start botonMenu" type="button" data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+        aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon "></span>
+      </button>
+      <div class="collapse navbar-collapse align-self-start col-lg-12 nav-menu" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex m-auto">
+          <li class="nav-item">
+            <a class="nav-link text-light" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-light" href="#categorias">Tienda</a>
+          </li>
+
+          <li class="nav-item" *ngIf="loggedIn; else notLogged">
+            <a class="nav-link text-light d-lg-none" routerLink="/login">{{user?.name}}</a>
+          </li>
+
+          <ng-template #notLogged>
+            <li class="nav-item">
+              <a class="nav-link text-light d-lg-none" routerLink="/login">Iniciar sesión</a>
+            </li>
+          </ng-template>
+          <li class="nav-item">
+            <a class="nav-link text-light d-lg-none" href="#">Mi carrito</a>
+          </li>
+        </ul>
       </div>
     </div>
-
-    <div class="col-lg-4 pt-4">
-      <form class="d-flex mb-4" role="search">
-        <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
-        <button class="btn boton-buscar" type="submit">Buscar</button>
-      </form>
-    </div>
-
-    <div class="col-lg-1"></div>
-    <div class="col-lg-3">
-
-      <ng-container *ngIf="!loggedIn;">
-        <a routerLink="/login">
-         <i class="bi bi-person text-light cuenta d-none d-lg-inline" ></i>
-       </a>
-       </ng-container>
-
-       <ng-container *ngIf="loggedIn">
-      <button mat-button [matMenuTriggerFor]="menu" class="text-light d-none d-lg-inline">{{user?.name}}
-        <span><mat-icon aria-hidden="false" class="text-light" aria-label="Example home icon" fontIcon="arrow_drop_down"></mat-icon></span>
-      </button>
-    </ng-container>
-
-      <mat-menu #menu="matMenu">
-        <button mat-menu-item><mat-icon aria-hidden="false" class="person" aria-label="Example home icon" fontIcon="person"></mat-icon>Mi cuenta</button>
-        <button mat-menu-item (click)="borrarSesion()"><mat-icon aria-hidden="false" class="logout" aria-label="Example home icon" fontIcon="logout"></mat-icon>
-          Cerrar sesión</button>
-      </mat-menu>
-
-      <a routerLink="/cart"> <i class="bi bi-cart mx-4 text-light carrito d-none d-lg-inline"></i></a>
-    </div>
-
-    <button class="navbar-toggler align-self-start botonMenu" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon "></span>
-    </button>
-    <div class="collapse navbar-collapse align-self-start col-lg-12 nav-menu" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex m-auto">
-        <li class="nav-item">
-          <a class="nav-link text-light" aria-current="page" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-light" href="#categorias">Tienda</a>
-        </li>
-
-        <li class="nav-item" *ngIf="loggedIn; else notLogged">
-          <a class="nav-link text-light d-lg-none" routerLink="/login">{{user?.name}}</a>
-        </li>
-
-        <ng-template #notLogged>
-        <li class="nav-item">
-          <a class="nav-link text-light d-lg-none" routerLink="/login">Iniciar sesión</a>
-        </li>
-      </ng-template>
-        <li class="nav-item">
-          <a class="nav-link text-light d-lg-none" href="#">Mi carrito</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
+  </nav>
 </header>
