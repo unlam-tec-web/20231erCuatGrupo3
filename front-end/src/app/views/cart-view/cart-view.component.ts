@@ -25,6 +25,9 @@ export class CartViewComponent implements OnInit {
     this.cartService.incrementQuantity(producto);
   }
 
+  obtenerPrecioPorCantidad(producto: ProductosCart): void{
+    this.cartService.obtenerPrecioPorCantidad(producto);
+  }
   // Componente
 // ...
 

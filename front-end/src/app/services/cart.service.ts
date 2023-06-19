@@ -115,4 +115,14 @@ export class CartService {
   this.cart = []
   this.productList.next(this.cart);
 }
+
+obtenerPrecioPorCantidad(producto: ProductosCart): number{
+  let subtotal = 0;
+  const productoExistente = this.cart.find(p => p.id === producto.id);
+  if (productoExistente) {
+    subtotal=productoExistente.cantidad*productoExistente.price;
+   }
+
+  return subtotal;
+}
 }
