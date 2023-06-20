@@ -7,15 +7,15 @@ import {ProductViewComponent} from "./views/product-view/product-view.component"
 import {RecoverPasswordViewComponent} from "./views/recover-password-view/recover-password-view.component";
 import {CartViewComponent} from "./views/cart-view/cart-view.component";
 import {CategoryViewComponent} from "./views/category-view/category-view.component";
-
+import{CheckoutViewComponent} from "./views/checkout-view/checkout-view.component";
 const routes: Routes = [
   {path:'',component:HomeViewComponent},
   {path: 'product/:id', component: ProductViewComponent},
   {path:'login',component:LoginViewComponent},
   {path:'recover-password',component:RecoverPasswordViewComponent},
   {path:'cart',component:CartViewComponent},
-  {path:'category/:name',component:CategoryViewComponent}
-
+  {path:'category/:name',component:CategoryViewComponent},
+  {path:'checkout',component:CheckoutViewComponent}
 
 ];
 
