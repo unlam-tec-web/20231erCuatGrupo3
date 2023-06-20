@@ -2,14 +2,21 @@
 <div class="row m-5">
   <div class="col-50">
     <div class="container">
-    
-            <h3>Datos de contacto</h3>
-            <h6 for="fname"><i class="fa fa-user"></i> Nombre completo</h6>
-            <h6>nombre</h6>
-            <h6 for="email"><i class="fa fa-envelope"></i> Email</h6>
-            <h6>email@mail.com</h6>
-            <h6 for="adr"><i class="fa fa-address-card-o"></i> Direcci&oacute;n</h6>
-            <h6>calle falsa 123</h6>
+
+      <h3>Datos de contacto</h3>
+      <div class="mb-4">
+        <h6 for="fname"><i class="fa fa-user"></i> Nombre completo</h6>
+        <h6>nombre</h6>
+      </div>
+      <div class="mb-4">
+        <h6 for="email"><i class="fa fa-envelope"></i> Email</h6>
+        <h6>email@mail.com</h6>
+      </div>
+      <div class="mb-4">
+        <h6 for="adr"><i class="fa fa-address-card-o"></i> Direcci&oacute;n</h6>
+        <h6>calle falsa 123</h6>
+      </div>
+
     </div>
   </div>
 
@@ -25,7 +32,15 @@
       <hr>
       <p>Total <span class="price text-dark"><b>$30</b></span></p>
     </div>
-    <button type="submit" class="btn">Realizar pedido</button>
+    <button type="submit" routerLink="/" class="btn">Realizar pedido</button>
 
   </div>
 </div>
+<!--
+   <li *ngFor="let prod of productos" class="list-group-item">
+            <img src="{{prod.imgUrl}}" alt="{{prod.nombre}}" style="max-width:75px; max-height: 75px;">
+            <strong>{{prod.nombre}}</strong><br>
+            <span>precio por unidad: {{prod.precioPagadoPorUnidad | currency}}</span><br>
+            <span>cantidad: {{prod.cantidad}}</span>
+          </li>
+-->
