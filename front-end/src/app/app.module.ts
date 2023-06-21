@@ -10,6 +10,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { LoginComponent } from './components/login/login.component';
 import { LoginViewComponent } from './views/login-view/login-view.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule} from "@angular/common/http";
 import { GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule,GoogleSigninButtonModule } from '@abacritt/angularx-social-login';
 import { ThumbnailsComponent } from './components/thumbnails/thumbnails.component';
 import { RecoverPasswordViewComponent } from './views/recover-password-view/recover-password-view.component';
@@ -53,9 +54,10 @@ import { CheckoutViewComponent } from './views/checkout-view/checkout-view.compo
     MatMenuModule,
     MatIconModule,
     MatButtonModule,
-    FormsModule,
     MatBadgeModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    HttpClientModule,
+    FormsModule
   ],
   providers: [
     {

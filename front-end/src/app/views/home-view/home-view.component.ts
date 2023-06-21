@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-import products from '../../../assets/json objects/products.json';
-import categories from '../../../assets/json objects/categories.json';
-
+import { ActivatedRoute } from '@angular/router';
+import {Product} from '../../../assets/interfaces/product.interface';
+import {Category} from '../../../assets/interfaces/category.interface';
+import {ProductService} from "../../services/product.service";
+import {Observable} from "rxjs";
 @Component({
   selector: 'app-home-view',
   templateUrl: './home-view.component.html',
@@ -9,64 +11,22 @@ import categories from '../../../assets/json objects/categories.json';
 })
 export class HomeViewComponent {
 
-  categories = [
-    {
-      id: '1',
-      type: 'Cervezas',
-      img: '../../../assets/img/categoriacerveza.jpg'
-    },
-    {
-      id: '2',
-      type: 'Vinos',
-      img: '../../../assets/img/categoriavino.jpg'
-    },
-    {
-      id: '3',
-      type: 'Whiskeys',
-      img: '../../../assets/img/categoriawhiskey.jpg'
-    },
-  ]
+  categories: Category [] = [];
+  products :Product [] = [];
 
-  products = [
-    {
-      id:1,
-      type: 'Cerveza',
-      name:'Heineken 6x 355cc Sin Alcohol',
-      details:'Rubia',
-      description: 'Cerveza Heineken Sin Alcohol 0.0% Lata 355ml Pack x6',
-      brand:'Heineken',
-      price:'3000',
-      img:'../../../assets/img/heineken.jpg'
-    },
-    {
-      id:2,
-      type: 'Vinos',
-      name:'Alamos Chardonay 750ml',
-      details:'Blanco',
-      description: 'Botella de vino blanco, Alamos Chardonay de 750ml.',
-      brand:'Alamos',
-      price:'2081',
-      img:'../../../assets/img/0019-ALAMOS-CHARDONNAY.jpg'
-    },
-    {
-      id:3,
-      type: 'Vinos',
-      name:'Benjamin Malbec 750ml',
-      details:'Tinto',
-      description: 'Botella de vino blanco, Benjamin Malbec de 750ml.',
-      brand:'Benjamin',
-      price:'800',
-      img:'../../../assets/img/BENJAMIN-MALBEC.jpg'
-    },
-    {
-      id:4,
-      type: 'Cerveza',
-      name:'Budweiser 410cc',
-      details:'Rubia',
-      description: 'Cerveza Budweiser en lata de 410cc.',
-      brand:'Budweiser',
-      price:'260',
-      img:'../../../assets/img/bud-78.png'
-    },
-  ];
+  constructor(private productService: ProductService, activatedRoute: ActivatedRoute){
+    let ProductsObservables:Observable<Product[]>;
+    let CategoriesObservables:Observable<Category[]>;
+
+    ProductsObservables = productService.getProducts();
+    ProductsObservables.subscribe((serverProducts) => {
+      this.products = serverProducts;
+    })
+
+    CategoriesObservables = productService.getCategories();
+    CategoriesObservables.subscribe((serverCategories) => {
+      this.categories = serverCategories;
+    })
+  }
+
 }

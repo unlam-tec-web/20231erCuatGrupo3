@@ -14,8 +14,6 @@ import { Product } from '../../../assets/interfaces/product.interface';
 export class ProductViewComponent implements OnInit{
 
   quantity : number =1;
-  stock : number =10;
-  quantityForm = new FormControl(1);
   totalPrice! : number;
   price! : number;
   product! : Product;
@@ -29,13 +27,15 @@ export class ProductViewComponent implements OnInit{
   {}
 
   ngOnInit(): void {
-    this.showProductToView();
-    this.setTotalPrice();
+    this.getProduct();
   }
 
-  private showProductToView() {
+  private getProduct() {
     this.sub = this.route.params.subscribe(({id}) => {
-      this.product = this.productService.getProductById(id);
+      this.productService.getProductById(id).subscribe(serverProduct => {
+        this.product = serverProduct;
+        this.setTotalPrice();
+      });
     });
   }
 
@@ -43,19 +43,12 @@ export class ProductViewComponent implements OnInit{
     this.totalPrice= this.product.price;
   }
 
-  agregarAlCarrito(id: number, quantity:number) {
+  addToCart(quantity:number) {
 
-    this.cartService.agregarAlCarrito(this.productService.getProductById(id),quantity);
+    this.cartService.agregarAlCarrito(this.product,quantity);
     this.router.navigate(['/cart']);
   }
 
-  ngOnDestroy():void{
-    this.sub.unsubscribe();
-  }
-
-  changeValue($event: any) {
-    console.log($event);
-  }
   getTotalPrice(){
     this.totalPrice = this.quantity * this.product.price;
   }

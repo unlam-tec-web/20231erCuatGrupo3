@@ -14,8 +14,8 @@ const routes: Routes = [
   {path:'login',component:LoginViewComponent},
   {path:'recover-password',component:RecoverPasswordViewComponent},
   {path:'cart',component:CartViewComponent},
-  {path:'category/:name',component:CategoryViewComponent},
-  {path:'checkout',component:CheckoutViewComponent}
+  {path:'checkout',component:CheckoutViewComponent},
+  {path:'category/:id',component:CategoryViewComponent}
 
 ];
 

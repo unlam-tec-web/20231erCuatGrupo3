@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import {Product} from '../../../assets/interfaces/product.interface';
 import { CartService } from 'src/app/services/cart.service';
 import { ProductService } from 'src/app/services/product.service';
 
@@ -17,12 +18,16 @@ export class CardComponent {
 
   }
 
+  product! : Product;
+
   agregarAlCarrito(id: number) {
 
-    this.cartService.agregarAlCarrito(this.productService.getProductById(id),1);
-    //this.router.navigate(['/cart']);
+    this.productService.getProductById(id).subscribe(serverProduct => {
+      this.product = serverProduct;
+      this.cartService.agregarAlCarrito(this.product,1);
+      //this.router.navigate(['/cart']);
+    });
   }
-
 
   viewProduct(id:number){
     this.router.navigate(['/product',id])
