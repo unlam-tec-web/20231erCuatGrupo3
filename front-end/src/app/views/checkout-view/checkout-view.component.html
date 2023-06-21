@@ -25,14 +25,22 @@
       <h4>Carrito
         <span class="price text-dark">
           <i class="fa fa-shopping-cart"></i>
-          <b>4</b>
         </span>
       </h4>
-      <p>Imagen y descripcion <span class="price">$15</span></p>
-      <hr>
-      <p>Total <span class="price text-dark"><b>$30</b></span></p>
+      <div>
+        <div *ngFor="let item of cartService.getCart()">
+          <h6 class="modo my-0"> {{item.name}}  X {{item.quantity}} </h6>
+          <small class="modo text-muted">{{item.description}} </small>
+          <div>
+            <span class="text-dark text-right">Precio $ {{cartService.obtenerPrecioPorCantidad(item)}} </span>
+          </div>
+          <hr>
+        </div>
     </div>
-    <button type="submit" routerLink="/" class="btn">Realizar pedido</button>
+    <p>Total<span class="price text-dark"><b>$ {{cartService.getSubtotal()}} </b></span></p>
+    </div>
+    <button  routerLink="/" class="btn btn-seguir">Seguir comprando</button>
+    <button type="submit" routerLink="/" class="btn-finalizar">Realizar pedido</button>
 
   </div>
 </div>
