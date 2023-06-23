@@ -28,6 +28,7 @@ import { CheckoutViewComponent } from './views/checkout-view/checkout-view.compo
 import { ProfileViewComponent } from './views/profile-view/profile-view.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,7 +60,7 @@ import { ProfileViewComponent } from './views/profile-view/profile-view.componen
     MatBadgeModule,
     MatSnackBarModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [
     {
