@@ -25,6 +25,7 @@ import { FormsModule } from '@angular/forms';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { CheckoutViewComponent } from './views/checkout-view/checkout-view.component';
+import { ProfileViewComponent } from './views/profile-view/profile-view.component';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import { CheckoutViewComponent } from './views/checkout-view/checkout-view.compo
     RecoverPasswordComponent,
     CartViewComponent,
     CategoryViewComponent,
-    CheckoutViewComponent
+    CheckoutViewComponent,
+    ProfileViewComponent
   ],
   imports: [
     BrowserModule,

@@ -26,9 +26,5 @@ export class CheckoutViewComponent implements OnInit{
   public getSubtotal(){
     this.cartService.getSubtotal();
   }
-  public comprarProducto(){
-    //this.cartService.vaciarCarrito();
-    //this.cartService.comprarProducto(this.cart, this.user.id);
-    //redirigir a perfil y mostrar todos los pedidos
-  }
+
 }
