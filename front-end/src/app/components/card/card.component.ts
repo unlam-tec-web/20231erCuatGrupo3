@@ -25,9 +25,8 @@ export class CardComponent {
     this.productService.getProductById(id).subscribe(serverProduct => {
       this.product = serverProduct;
       this.cartService.agregarAlCarrito(this.product,1);
-      this.router.navigate(['/cart']);
+      //this.router.navigate(['/cart']);
     });
-
   }
 
   viewProduct(id:number){

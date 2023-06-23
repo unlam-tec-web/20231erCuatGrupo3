@@ -3,8 +3,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProductService } from 'src/app/services/product.service';
 import { UserService } from 'src/app/services/user.service';
+import { CartService } from 'src/app/services/cart.service';
 import { Product } from 'src/assets/interfaces/product.interface';
 import { User } from 'src/assets/interfaces/user.interface';
+
 
 @Component({
   selector: 'app-header',
@@ -13,6 +15,7 @@ import { User } from 'src/assets/interfaces/user.interface';
 })
 export class HeaderComponent implements OnInit {
   user: SocialUser | User | null = null;
+  totalItem : number = 0;
   loggedIn: boolean = false;
   nombreDelProducto: string = '';
   searchedProducts: Product[] = [];
@@ -20,7 +23,8 @@ export class HeaderComponent implements OnInit {
   constructor(
     private userServices: UserService,
     private router: Router,
-    private productServices: ProductService
+    private productServices: ProductService,
+    private cartService: CartService
   ) {}
 
   ngOnInit() {
@@ -32,6 +36,10 @@ export class HeaderComponent implements OnInit {
     }
     this.loggedIn = this.user != null;
     console.log(this.loggedIn)
+    this.cartService.getProductosEnCarrito()
+    .subscribe(res=>{
+  this.totalItem = res.length;
+})
   }
 
   obtenerProducto() {

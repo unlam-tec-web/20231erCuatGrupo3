@@ -25,6 +25,10 @@ export class CartViewComponent implements OnInit {
     this.cartService.incrementQuantity(producto);
   }
 
+  obtenerPrecioPorCantidad(producto: Cart): void{
+    this.cartService.obtenerPrecioPorCantidad(producto);
+  }
+
   onQuantityChange(id: number) {
     console.log(this.cart[this.cart.findIndex(p => p.id === id)].quantity);
   }

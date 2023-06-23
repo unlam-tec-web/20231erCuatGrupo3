@@ -58,7 +58,15 @@
             Cerrar sesión</button>
         </mat-menu>
 
-        <a routerLink="/cart"> <i class="bi bi-cart mx-4 text-light carrito d-none d-lg-inline"></i></a>
+        <a routerLink="/cart" mat-icon-button >
+          <mat-icon
+            [matBadge]="totalItem"
+            [matBadgeHidden]="!totalItem"
+            matBadgeColor="warn"
+            [ngStyle]="{'color':'white'}"
+            >shopping_cart</mat-icon
+          >
+        </a>
       </div>
 
       <button class="navbar-toggler align-self-start botonMenu" type="button" data-bs-toggle="collapse"
