@@ -27,6 +27,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { CheckoutViewComponent } from './views/checkout-view/checkout-view.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,7 +58,7 @@ import { CheckoutViewComponent } from './views/checkout-view/checkout-view.compo
     MatBadgeModule,
     MatSnackBarModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [
     {
