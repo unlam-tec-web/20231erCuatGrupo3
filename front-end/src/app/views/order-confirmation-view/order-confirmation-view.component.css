@@ -1,0 +1,15 @@
+.btn-volver {
+    background-color: #F75C03;
+    color: white;
+    padding: 12px;
+    margin: 10px 0;
+    border: none;
+    width: 300px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 17px;
+  }
+  
+  .btn-volver:hover {
+    background-color: #ec6b20;
+  }

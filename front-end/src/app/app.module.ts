@@ -26,6 +26,7 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { CheckoutViewComponent } from './views/checkout-view/checkout-view.component';
 import { ProfileViewComponent } from './views/profile-view/profile-view.component';
+import { OrderConfirmationViewComponent } from './views/order-confirmation-view/order-confirmation-view.component';
 
 
 
@@ -45,7 +46,8 @@ import { ProfileViewComponent } from './views/profile-view/profile-view.componen
     CartViewComponent,
     CategoryViewComponent,
     CheckoutViewComponent,
-    ProfileViewComponent
+    ProfileViewComponent,
+    OrderConfirmationViewComponent
   ],
   imports: [
     BrowserModule,
