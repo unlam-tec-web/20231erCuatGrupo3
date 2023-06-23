@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ProductService } from 'src/app/services/product.service';
 import { UserService } from 'src/app/services/user.service';
 import { Product } from 'src/assets/interfaces/product.interface';
+import { User } from 'src/assets/interfaces/user.interface';
 
 @Component({
   selector: 'app-header',
@@ -11,7 +12,7 @@ import { Product } from 'src/assets/interfaces/product.interface';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
-  user: SocialUser | null = null;
+  user: SocialUser | User | null = null;
   loggedIn: boolean = false;
   nombreDelProducto: string = '';
   searchedProducts: Product[] = [];
@@ -24,6 +25,13 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     this.obtenerUsuario();
+    const localUser = localStorage.getItem('USUARIOLOGUEADO');
+    console.log(localUser)
+    if(this.user == null){
+      this.user = localUser ? JSON.parse(localUser) : null; 
+    }
+    this.loggedIn = this.user != null;
+    console.log(this.loggedIn)
   }
 
   obtenerProducto() {
@@ -36,7 +44,6 @@ export class HeaderComponent implements OnInit {
 
   async obtenerUsuario() {
     this.user = await this.userServices.obtenerUsuarioDeLaSesion();
-    this.loggedIn = this.user != null;
   }
 
   borrarSesion() {

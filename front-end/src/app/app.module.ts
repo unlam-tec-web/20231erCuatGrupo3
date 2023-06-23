@@ -25,6 +25,7 @@ import { FormsModule } from '@angular/forms';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,7 +53,7 @@ import { FormsModule } from '@angular/forms';
     MatIconModule,
     MatButtonModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [
     {

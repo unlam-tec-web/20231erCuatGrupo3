@@ -1,12 +1,33 @@
 import { SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
+import { HttpClient } from '@angular/common/http';
 import {Injectable } from '@angular/core';
+import { USER_LOGIN, USER_REGISTERURL } from '../shared/constants/urls';
+import { User } from 'src/assets/interfaces/user.interface';
+import { Observable } from 'rxjs';
+import { UserLogin } from 'src/assets/interfaces/userLogin.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService{
 
-  constructor(private authService: SocialAuthService) { }
+  constructor(private authService: SocialAuthService,public httpClient:HttpClient) { }
+
+
+
+
+registrarUsuario(user:User) :Observable<any>{
+  console.log(user)
+  return this.httpClient.post<any>(USER_REGISTERURL,user);
+}
+
+ loguearUsuario(user:UserLogin) :Observable<any>{
+   return this.httpClient.post<any>(USER_LOGIN,user);
+  }
+
+  cargarDatosDeSesion(usuario:string){
+    const usuarioLogueado = localStorage.setItem('USUARIOLOGUEADO',usuario);
+  }
 
   obtenerUsuarioDeLaSesion() : Promise<SocialUser | null> {
     const usuarioString = localStorage.getItem('USUARIO')
@@ -29,8 +50,8 @@ export class UserService{
   }
 
   borrarSesion(){
-
     localStorage.removeItem('USUARIO');
+    localStorage.removeItem('USUARIOLOGUEADO')
     const sesionCerrada=this.authService.signOut()
     console.log(sesionCerrada)
 

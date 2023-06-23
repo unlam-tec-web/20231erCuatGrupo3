@@ -1,6 +1,6 @@
 <div class="container my-3 m-auto " id="container" [ngClass]="rightPanelClass ? 'right-panel-active':''">
     <div class="form-container sign-up-container">
-      <form [formGroup]="registerForm">
+      <form [formGroup]="registerForm" (submit)="registrarUsuario()">
         <h3 class="mt-5">Crear cuenta</h3>
         <div class="social-container">
           <asl-google-signin-button type='standard'  text='signup_with' width="220" size='medium'></asl-google-signin-button>
@@ -27,11 +27,11 @@
         <li class="text-secondary">Al menos 1 caracter especial (! @ # $)</li>
       </ul>
     </div>
-       <button class="btn registrar mt-4 mb-4" [disabled]="registerForm.invalid" >Registrar cuenta</button>
+       <button type="submit" class="btn registrar mt-4 mb-4" [disabled]="registerForm.invalid" >Registrar cuenta</button>
       </form>
     </div>
     <div class="form-container sign-in-container">
-      <form [formGroup]="loginForm">
+      <form [formGroup]="loginForm" (submit)="validarUsuario()">
         <h3>Inicio de sesión</h3>
         <div class="social-container">
           <asl-google-signin-button type='standard' text='continue_with' size='medium' width="220"></asl-google-signin-button>
