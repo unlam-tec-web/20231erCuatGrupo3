@@ -66,10 +66,10 @@ app.post("/api/users/login",async (req, res) => {
 });
 
 app.post("/api/users/register", async (req, res) => {
-  const { nombre, apellido, direccion, emailRegistro, passwordRegistro } =
+  const { name, apellido, direccion, emailRegistro, passwordRegistro } =
     req.body;
   const result = await userServices.registerUser(
-    nombre,
+    name,
     apellido,
     direccion,
     emailRegistro,
