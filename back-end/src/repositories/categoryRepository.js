@@ -1,0 +1,1 @@
+const dbPromise = require("../../config/db");

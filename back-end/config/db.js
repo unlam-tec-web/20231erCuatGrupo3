@@ -1,7 +1,6 @@
 require('./env');
 const { MongoClient, ServerApiVersion } = require('mongodb');
 
-
 const uri = process.env.CONNECTION;
 let db;
 
