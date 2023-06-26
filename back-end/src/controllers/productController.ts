@@ -1,35 +1,57 @@
-import {categories, products} from "../pretend-products";
+import {product} from "../pretend-products";
 import {Router} from 'express';
+import expressAsyncHandler from "express-async-handler";
+import {ProductModel} from "../models/product-model";
 
 const router = Router();
 
-router.get("/", (req, res) => {
+router.get("/seed", expressAsyncHandler(
+    async(req, res) => {
+    const productCount = await ProductModel.countDocuments();
+    if(productCount > 0){
+        res.send("Seed Is Done there is= " + productCount + " Products.");
+        return;
+    }
+    await ProductModel.create(product);
+        res.send("Jobs Done");
+}
+));
+
+router.get("/",expressAsyncHandler(
+    async  (req, res) => {
+    const products = await ProductModel.find()
     res.send(products);
-});
+}
+));
 
-router.get("/search/:searchedProduct", (req, res) => {
+router.get("/search/:searchedProduct",expressAsyncHandler(
+    async (req, res) => {
+
     const searchedProduct = req.params.searchedProduct;
-    const product = products
-        .filter((product) =>
-            product.name.toLowerCase().includes(searchedProduct.toLowerCase())
-        )
-        .slice(0, 5);
-
+    const searchRegex = new RegExp(searchedProduct, 'i')
+    const product = await ProductModel.find({name: {$regex:searchRegex}});
     res.send(product);
-});
+}
+));
 
-router.get("/category/:searchedCategoryId", (req, res) => {
-    const searchedCategoryId = req.params.searchedCategoryId;
-    const product = products.filter((p) => p.category == searchedCategoryId);
+router.get("/category/:searchedCategoryType",expressAsyncHandler(
+    async (req, res) => {
 
-    res.send(product);
-});
+    const searchedCategory = req.params.searchedCategoryType;
+    const productFound = await ProductModel.find({type:searchedCategory});
 
-router.get("/:productId", (req, res) => {
+    res.send(productFound);
+}
+));
+
+router.get("/:productId",expressAsyncHandler(
+    async (req, res) => {
+
     const productId = req.params.productId;
-    const product = products.find((p) => p.id == productId);
+    const productFound = await ProductModel.findById(productId);
 
-    res.send(product);
-});
+    res.send(productFound);
+}
+));
 
 export default router;

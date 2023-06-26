@@ -17,7 +17,7 @@ const routes: Routes = [
   {path:'recover-password',component:RecoverPasswordViewComponent},
   {path:'cart',component:CartViewComponent},
   {path:'checkout',component:CheckoutViewComponent},
-  {path:'category/:id',component:CategoryViewComponent},
+  {path:'category/:type',component:CategoryViewComponent},
   {path: 'profile', component: ProfileViewComponent},
   {path: 'order-confirmation', component: OrderConfirmationViewComponent}
 ];
