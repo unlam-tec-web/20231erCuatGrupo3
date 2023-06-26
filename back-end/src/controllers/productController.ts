@@ -2,6 +2,8 @@ import {product} from "../pretend-products";
 import {Router} from 'express';
 import expressAsyncHandler from "express-async-handler";
 import {ProductModel} from "../models/product-model";
+const {productServices} = require("../services/productServices");
+import {parse, stringify, toJSON, fromJSON} from 'flatted';
 
 const router = Router();
 
@@ -16,13 +18,23 @@ router.get("/seed", expressAsyncHandler(
         res.send("Jobs Done");
 }
 ));
-
 router.get("/",expressAsyncHandler(
-    async  (req, res) => {
-    const products = await ProductModel.find()
-    res.send(products);
+    async (req, res) => {
+
+        res.send(await productServices.getProducts());
+    }
+    ));
+/*
+
+router.get("/",
+    (req, res) => {
+    productServices.getProducts().then(products => {
+        res.status(200).json(products);
+    }).catch (error => {
+        res.status(500).json({error: error.message});
+    })
 }
-));
+); */
 
 router.get("/search/:searchedProduct",expressAsyncHandler(
     async (req, res) => {
