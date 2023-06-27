@@ -1,4 +1,4 @@
-import {Schema, model} from "mongoose";
+const mongoose = require("mongoose");
 
 export interface Product{
     id: string
@@ -12,7 +12,7 @@ export interface Product{
     img: string
 }
 
-export const productSchema = new Schema<Product>(
+export const productSchema = mongoose.Schema(
     {
         type: {type:String, required:true},
         category: {type:String, required:true},
@@ -33,6 +33,6 @@ export const productSchema = new Schema<Product>(
     }
 );
 
-export const ProductModel = model<Product>("product",productSchema)
+export const ProductModel =new mongoose.model("product",productSchema)
 
 

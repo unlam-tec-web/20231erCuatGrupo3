@@ -1,4 +1,4 @@
-import {Schema, model} from "mongoose";
+const mongoose = require("mongoose");
 
 export interface Category{
     id: string
@@ -6,7 +6,7 @@ export interface Category{
     img: string
 }
 
-export const categorySchema = new Schema<Category>(
+export const categorySchema =mongoose.Schema(
     {
         type: {type:String, required:true},
         img: {type:String, required:true},
@@ -21,4 +21,4 @@ export const categorySchema = new Schema<Category>(
     }
 );
 
-export const CategoryModel = model<Category>("category",categorySchema)
+export const CategoryModel = new mongoose.model("category",categorySchema)
