@@ -1,7 +1,7 @@
 
-export const products: any[] = [
+export const product: any[] = [
     {
-        "id":1,
+        "id":"1",
         "type":"Cervezas",
         "category":1,
         "name":"Heineken 6x 355cc Sin Alcohol",
@@ -12,7 +12,7 @@ export const products: any[] = [
         "img":"../../../assets/img/heineken.jpg"
     },
     {
-        "id":2,
+        "id":"2",
         "type":"Cervezas",
         "category":1,
         "name":"Andes Origen Negra 473cc",
@@ -23,7 +23,7 @@ export const products: any[] = [
         "img":"../../../assets/img/ANDES.jpg"
     },
     {
-        "id":3,
+        "id":"3",
         "type":"Cervezas",
         "category":1,
         "name":"Miller 473cc",
@@ -34,7 +34,7 @@ export const products: any[] = [
         "img":"../../../assets/img/MILLER-473-.png"
     },
     {
-        "id":4,
+        "id":"4",
         "type":"Cervezas",
         "category":1,
         "name":"Budweiser 410cc",
@@ -45,7 +45,7 @@ export const products: any[] = [
         "img":"../../../assets/img/bud-78.png"
     },
     {
-        "id":5,
+        "id":"5",
         "type":"Cervezas",
         "category":1,
         "name":"Quilmes 473cc",
@@ -56,7 +56,7 @@ export const products: any[] = [
         "img":"../../../assets/img/productos-2022-11-23T114702.526.png"
     },
     {
-        "id":6,
+        "id":"6",
         "type":"Cervezas",
         "category":1,
         "name":"Quilmes 340cc",
@@ -67,7 +67,7 @@ export const products: any[] = [
         "img":"../../../assets/img/quilmes-porron.jpg"
     },
     {
-        "id":7,
+        "id":"7",
         "type":"Cervezas",
         "category":1,
         "name":"Stella Noire",
@@ -78,7 +78,7 @@ export const products: any[] = [
         "img":"../../../assets/img/project_20200925_1319378-011-1e181d976f40159ac316010508482964-1024-1024.png"
     },
     {
-        "id":8,
+        "id":"8",
         "type":"Cervezas",
         "category":1,
         "name":"Stella Artois Lata 269cc",
@@ -89,7 +89,7 @@ export const products: any[] = [
         "img":"../../../assets/img/productos-2022-09-12T154632.130.png"
     },
     {
-        "id":9,
+        "id":"9",
         "type":"Whiskys",
         "category":3,
         "name":"Johnnie Walker Blue Label",
@@ -100,7 +100,7 @@ export const products: any[] = [
         "img":"../../../assets/img/Johnnie-Walker-Blue.jpg"
     },
     {
-        "id":10,
+        "id":"10",
         "type":"Whiskys",
         "category":3,
         "name":"Johnnie Walker Black Label 750cc",
@@ -111,7 +111,7 @@ export const products: any[] = [
         "img":"../../../assets/img/JOHNNIE-WALKER-BLACK-750.jpg"
     },
     {
-        "id":11,
+        "id":"11",
         "type":"Whiskys",
         "category":3,
         "name":"Jack Daniel's Honey 750cc",
@@ -122,7 +122,7 @@ export const products: any[] = [
         "img":"../../../assets/img/jack-daniels-honey.jpg"
     },
     {
-        "id":12,
+        "id":"12",
         "type":"Whiskys",
         "category":3,
         "name":"Jack Daniel's 750cc",
@@ -133,7 +133,7 @@ export const products: any[] = [
         "img":"../../../assets/img/JACK-DANIELS-1.jpg"
     },
     {
-        "id":13,
+        "id":"13",
         "type":"Whiskys",
         "category":3,
         "name":"Grants Ale Cask Edition",
@@ -144,7 +144,7 @@ export const products: any[] = [
         "img":"../../../assets/img/GRANTS-ALE-CASK-EDITION.jpg"
     },
     {
-        "id":14,
+        "id":"14",
         "type":"Whiskys",
         "category":3,
         "name":"Ballantine 7 Años 700cc",
@@ -155,7 +155,7 @@ export const products: any[] = [
         "img":"../../../assets/img/productos-2022-09-24T115007.440.png"
     },
     {
-        "id":15,
+        "id":"15",
         "type":"Whiskys",
         "category":3,
         "name":"Aberlour Scotch Whisky",
@@ -166,7 +166,7 @@ export const products: any[] = [
         "img":"../../../assets/img/ABERLOUR.jpg"
     },
     {
-        "id":16,
+        "id":"16",
         "type":"Whiskys",
         "category":3,
         "name":"Blenders x 1 Litro",
@@ -177,7 +177,7 @@ export const products: any[] = [
         "img":"../../../assets/img/BLENDERS.jpg"
     },
     {
-        "id":17,
+        "id":"17",
         "type": "Vinos",
         "category":2,
         "name":"Benjamin Chardonnay 750ml",
@@ -188,7 +188,7 @@ export const products: any[] = [
         "img":"../../../assets/img/BENJAMIN-CHARDONNAY.jpg"
     },
     {
-        "id":18,
+        "id":"18",
         "type": "Vinos",
         "category":2,
         "name":"Alamos Chardonay 750ml",
@@ -199,7 +199,7 @@ export const products: any[] = [
         "img":"../../../assets/img/0019-ALAMOS-CHARDONNAY.jpg"
     },
     {
-        "id":19,
+        "id":"19",
         "type":"Vinos",
         "category":2,
         "name":"Benjamin Malbec 750ml",
@@ -210,7 +210,7 @@ export const products: any[] = [
         "img":"../../../assets/img/BENJAMIN-MALBEC.jpg"
     },
     {
-        "id":20,
+        "id":"20",
         "type":"Vinos",
         "category":2,
         "name":"Alamos Malbec 750ml",
@@ -221,7 +221,7 @@ export const products: any[] = [
         "img":"../../../assets/img/0020-ALAMOS-MALBEC.jpg"
     },
     {
-        "id":21,
+        "id":"21",
         "type":"Vinos",
         "category":2,
         "name":"Amalaya Rosado de Corte",
@@ -232,7 +232,7 @@ export const products: any[] = [
         "img":"../../../assets/img/Amalaya.jpg"
     },
     {
-        "id":22,
+        "id":"22",
         "type": "Vinos",
         "category":2,
         "name":"Aime Red Blend 750ml",
@@ -243,7 +243,7 @@ export const products: any[] = [
         "img":"../../../assets/img/Aime-Red-Blend.jpg"
     },
     {
-        "id":23,
+        "id":"23",
         "type": "Vinos",
         "category":2,
         "name":"Alambrado Malbec 750ml",
@@ -254,7 +254,7 @@ export const products: any[] = [
         "img":"../../../assets/img/Alambrado-Malbec.jpg"
     },
     {
-        "id":24,
+        "id":"24",
         "type":"Vinos",
         "category":2,
         "name":"Alma Mora Malbec 750ml",
@@ -266,19 +266,19 @@ export const products: any[] = [
     }
 ];
 
-export const categories : any [] =[
+export const category : any [] =[
     {
-        "id":1,
+        "id":"1",
         "type":"Cervezas",
         "img": "../../../assets/img/categoriacerveza.jpg"
     },
     {
-        "id":2,
+        "id":"2",
         "type":"Vinos",
         "img":"../../../assets/img/categoriavino.jpg"
     },
     {
-        "id":3,
+        "id":"3",
         "type":"Whiskys",
         "img":"../../../assets/img/categoriawhiskey.jpg"
     }

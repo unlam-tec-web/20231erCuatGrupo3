@@ -9,7 +9,7 @@ import {ProductService} from "../../services/product.service";
   styleUrls: ['./category-view.component.css']
 })
 export class CategoryViewComponent implements OnInit{
-  id! : number;
+  type! : string;
   private sub: any;
   products : Product[] = [];
   category! : string;
@@ -21,15 +21,15 @@ export class CategoryViewComponent implements OnInit{
   ){}
 
  ngOnInit(): void {
-   this.sub = this.route.params.subscribe(params => {this.id = params['id']})
+   this.sub = this.route.params.subscribe(params => {this.type = params['type']})
    this.getProductsByCategory();
  }
 
   private getProductsByCategory() {
-   this.sub = this.route.params.subscribe(({id}) => {
-     this.productService.getProductsByCategory(this.id).subscribe(serverProduct => {
+   this.sub = this.route.params.subscribe(({type}) => {
+     this.productService.getProductsByCategory(this.type).subscribe(serverProduct => {
        this.products = serverProduct;
-       this.category = serverProduct[0].type;
+       this.category = type;
      });
    });
  }

@@ -1,5 +1,5 @@
 {
-    "Products":[
+    "Product":[
     {
       "id":1,
       "type":"Cerveza",
@@ -265,7 +265,7 @@
         "img":"../../../assets/img/Alma-Mora-Malbec.jpg"
     }
   ],
-  "categories":[
+  "category":[
     {
       "id":1,
       "type":"Cervezas",

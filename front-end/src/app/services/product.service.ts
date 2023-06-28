@@ -31,8 +31,8 @@ export class ProductService {
 
     return this.http.get<Product>(PRODUCT_BY_ID_URL+id);
   }
-  public getProductsByCategory(id:number): Observable <Product[]>{
-    return this.http.get<Product[]>(PRODUCT_BY_CATEGORY_URL + id);
+  public getProductsByCategory(type:string): Observable <Product[]>{
+    return this.http.get<Product[]>(PRODUCT_BY_CATEGORY_URL + type);
   }
   public getProductsByName(name:string): Observable <Product[]>{
     return this.http.get<Product[]>(PRODUCT_BY_SEARCH_URL + name);
