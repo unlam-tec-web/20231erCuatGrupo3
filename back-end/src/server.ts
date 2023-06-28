@@ -7,7 +7,6 @@ import productController from "./controllers/productController";
 import categoryController from "./controllers/categoryController";
 import userController from "./controllers/userController";
 import {dbConnect} from "../config/database-config";
-import router from "./controllers/userController";
 const {userServices} = require("./services/userServices");
 dbConnect();
 
@@ -26,9 +25,9 @@ app.use(
 
 app.use("/api/products",productController);
 app.use("/api/categories",categoryController);
-app.use("/api/users",userController);
+ // app.use("/api/users",userController);
 
-app.post("api/users/login",async (req, res) => {
+app.post("/api/users/login",async (req, res) => {
     const{email, password} = req.body;
     const result =await userServices.loginUser(email,password)
 
@@ -45,7 +44,7 @@ app.post("api/users/login",async (req, res) => {
     }
 });
 
-app.post("api/users/register", async (req, res) => {
+app.post("/api/users/register", async (req, res) => {
     const { name, apellido, direccion, emailRegistro, passwordRegistro } =
         req.body;
     const result = await userServices.registerUser(
@@ -68,7 +67,7 @@ app.post("api/users/register", async (req, res) => {
     }
 });
 
-app.post('api/users/checkCode', async (req, res) => {
+app.post('/api/users/checkCode', async (req, res) => {
     const email = req.body.email.trim();
     const code = req.body.codigo;
     const result = await userServices.verificarCodigo(email,code)
