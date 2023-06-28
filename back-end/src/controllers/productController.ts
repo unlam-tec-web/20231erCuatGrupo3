@@ -5,15 +5,15 @@ const {productServices} = require("../services/productServices");
 
 const router = Router();
 
-
+/*
 router.get("/",expressAsyncHandler(
     async (req, res) => {
 
         res.send(await productServices.getProducts());
     }
     ));
-/*
 
+*/
 router.get("/",
     (req, res) => {
     productServices.getProducts().then(products => {
@@ -22,7 +22,7 @@ router.get("/",
         res.status(500).json({error: error.message});
     })
 }
-); */
+);
 
 router.get("/search/:searchedProduct",expressAsyncHandler(
     async (req, res) => {
