@@ -1,5 +1,3 @@
-const userRepository = require("../repositories/userRepository");
-const bcrypt = require("bcrypt");
 const AmazonCognitoIdentity = require('amazon-cognito-identity-js');
 const CognitoUserPool = AmazonCognitoIdentity.CognitoUserPool;
 
@@ -57,7 +55,6 @@ return new Promise((resolve,reject) => {
 })
 
 } 
-
 
 const loginUser = async (email, password) => {
   return new Promise((resolve,reject) => {
