@@ -52,10 +52,10 @@ app.post("/api/users/login",async (req, res) => {
   const{email, password} = req.body;
   const result = await userServices.loginUser(email,password)
   
-  if (result.resultado) {
+  if (result.ok) {
     res.status(200).send({
       mensaje: result.mensaje,
-      usuario: {...result.user, password: undefined }
+      usuario: result.usuario
     });
   } else{
     res.status(401).send({
@@ -76,18 +76,37 @@ app.post("/api/users/register", async (req, res) => {
     passwordRegistro
   );
 
-
-  if (result.acknowledged) {
+  if (result.ok) {
     res.status(200).send({
-      mensaje: "El usuario se ha registrado correctamente",
+      mensaje:result.mensaje,
     });
   } else{
     res.status(500).send({
-      mensaje: result,
+      mensaje: result.mensaje,
     });
     
   }
 });
+
+
+app.post('/api/users/checkCode', async (req, res) => {
+  const email = req.body.email.trim();
+  const code = req.body.codigo;
+  const result = await userServices.verificarCodigo(email,code)
+  
+  if (result.ok) {
+    res.status(200).send({
+      mensaje:result.mensaje,
+    });
+  } else{
+    res.status(500).send({
+      mensaje: result.mensaje,
+    });
+    
+  }
+
+});
+
 
 const port = 5000;
 app.listen(port, () => {

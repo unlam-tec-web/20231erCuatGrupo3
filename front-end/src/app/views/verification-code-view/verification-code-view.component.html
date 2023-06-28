@@ -1,0 +1,20 @@
+<app-header></app-header>
+
+<div class="container my-3 m-auto " id="container">
+    <div class="form-container">
+        <form [formGroup]="verificationForm" method="post" (submit)="verificarCodigo()">
+            <div class="container-fluid mt-4">
+                <p>Correo Electronico</p>
+                <input type="text" formControlName="email">
+                <p>Codigo</p>
+                <input type="text" formControlName="codigo">
+            </div>
+                <button type="submit" class="btn validar mt-4" [disabled]="verificationForm.invalid">
+                    Validar
+                </button>
+            
+
+        </form>
+    </div>
+</div>
+<app-footer></app-footer>
