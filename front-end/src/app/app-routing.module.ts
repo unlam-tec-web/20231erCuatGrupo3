@@ -10,6 +10,7 @@ import {CategoryViewComponent} from "./views/category-view/category-view.compone
 import{CheckoutViewComponent} from "./views/checkout-view/checkout-view.component";
 import { ProfileViewComponent } from './views/profile-view/profile-view.component';
 import { OrderConfirmationViewComponent } from './views/order-confirmation-view/order-confirmation-view.component';
+import { VerificationCodeViewComponent } from './views/verification-code-view/verification-code-view.component';
 const routes: Routes = [
   {path:'',component:HomeViewComponent},
   {path: 'product/:id', component: ProductViewComponent},
@@ -19,7 +20,8 @@ const routes: Routes = [
   {path:'checkout',component:CheckoutViewComponent},
   {path:'category/:type',component:CategoryViewComponent},
   {path: 'profile', component: ProfileViewComponent},
-  {path: 'order-confirmation', component: OrderConfirmationViewComponent}
+  {path: 'order-confirmation', component: OrderConfirmationViewComponent},
+  {path: 'checkCode',component:VerificationCodeViewComponent}
 ];
 
 @NgModule({

@@ -27,6 +27,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { CheckoutViewComponent } from './views/checkout-view/checkout-view.component';
 import { ProfileViewComponent } from './views/profile-view/profile-view.component';
 import { OrderConfirmationViewComponent } from './views/order-confirmation-view/order-confirmation-view.component';
+import { VerificationCodeViewComponent } from './views/verification-code-view/verification-code-view.component';
 
 
 
@@ -47,7 +48,8 @@ import { OrderConfirmationViewComponent } from './views/order-confirmation-view/
     CategoryViewComponent,
     CheckoutViewComponent,
     ProfileViewComponent,
-    OrderConfirmationViewComponent
+    OrderConfirmationViewComponent,
+    VerificationCodeViewComponent
   ],
   imports: [
     BrowserModule,

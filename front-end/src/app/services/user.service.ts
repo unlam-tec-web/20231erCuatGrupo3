@@ -1,10 +1,11 @@
 import { SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
 import { HttpClient } from '@angular/common/http';
 import {Injectable } from '@angular/core';
-import { USER_LOGIN, USER_REGISTERURL } from '../shared/constants/urls';
+import { USER_LOGIN, USER_REGISTERURL, USER_VERIFICATE } from '../shared/constants/urls';
 import { User } from 'src/assets/interfaces/user.interface';
 import { Observable } from 'rxjs';
 import { UserLogin } from 'src/assets/interfaces/userLogin.interface';
+import { UserVerification } from 'src/assets/interfaces/userVerification.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,6 @@ export class UserService{
 
 
 registrarUsuario(user:User) :Observable<any>{
-  console.log(user)
   return this.httpClient.post<any>(USER_REGISTERURL,user);
 }
 
@@ -28,6 +28,10 @@ registrarUsuario(user:User) :Observable<any>{
   cargarDatosDeSesion(usuario:string){
     const usuarioLogueado = localStorage.setItem('USUARIOLOGUEADO',usuario);
   }
+
+verificarCodigo(user:UserVerification){
+  return this.httpClient.post<any>(USER_VERIFICATE,user);
+}
 
   obtenerUsuarioDeLaSesion() : Promise<SocialUser | null> {
     const usuarioString = localStorage.getItem('USUARIO')
@@ -53,7 +57,6 @@ registrarUsuario(user:User) :Observable<any>{
     localStorage.removeItem('USUARIO');
     localStorage.removeItem('USUARIOLOGUEADO')
     const sesionCerrada=this.authService.signOut()
-    console.log(sesionCerrada)
 
   }
 }
