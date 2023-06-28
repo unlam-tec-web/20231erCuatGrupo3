@@ -58,16 +58,17 @@ export class LoginComponent implements OnInit {
       const usuarioString = JSON.stringify(response.usuario);
       this.userServices.cargarDatosDeSesion(usuarioString);
 
-      Swal.fire("Inicio de sesión exitoso",response.mensaje,'success');
-      setTimeout(() => this.router.navigateByUrl('/'),3000);
+      Swal.fire("Inicio de sesión exitoso",response.mensaje,'success')
+     .then((result) => {
+      if(result.isConfirmed){
+        this.router.navigateByUrl('/')
+      }
+     })
     },
     (error) => {
       if(error.status == 401){
-        console.log("Error",error)
         Swal.fire("Error al iniciar sesión",error.error.mensaje,'error');
-        console.log(error.status)
       }else{
-        console.log(error)
         Swal.fire(
           "Se ha producido un error, por favor intente mas tarde",
           "error"
@@ -90,18 +91,20 @@ export class LoginComponent implements OnInit {
     }
       
  return this.userServices.registrarUsuario(user).subscribe((response) =>{
-       Swal.fire("Registro exitoso",response.mensaje,'success');
-       this.rightPanelClass = false;
-       this.resetarFormulario();
+       Swal.fire("Registro exitoso",response.mensaje,'success').then((result)=>{
+        if(result.isConfirmed){
+          this.rightPanelClass = false;
+          this.resetarFormulario();
+          this.router.navigateByUrl('/checkCode')
+        }
+       });
+     
     
  },
  (error) =>{
   if(error.status == 500){
-    console.log("Error",error)
     Swal.fire("Error al registrar usuario",error.error.mensaje,'error');
-    console.log(error.status)
   }else{
-    console.log(error)
     Swal.fire(
       "Se ha producido un error, por favor intente mas tarde",
       "error"

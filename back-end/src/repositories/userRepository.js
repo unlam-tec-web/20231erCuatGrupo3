@@ -10,7 +10,6 @@ return user;
 const registerUser = async (user) => {
     const db = await dbPromise;
     const users = await db.collection("users");
-    console.log(user);
     const userSave = await users.insertOne(user)
     return userSave;
 }

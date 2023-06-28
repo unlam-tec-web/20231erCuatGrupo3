@@ -30,12 +30,10 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
     this.obtenerUsuario();
     const localUser = localStorage.getItem('USUARIOLOGUEADO');
-    console.log(localUser)
     if(this.user == null){
       this.user = localUser ? JSON.parse(localUser) : null; 
     }
     this.loggedIn = this.user != null;
-    console.log(this.loggedIn)
     this.cartService.getProductosEnCarrito()
     .subscribe(res=>{
   this.totalItem = res.length;

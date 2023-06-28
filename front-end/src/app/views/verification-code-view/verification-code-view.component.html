@@ -1,0 +1,12 @@
+<app-header></app-header>
+
+<form [formGroup]="verificationForm" method="post" (submit)="verificarCodigo()">
+    <input type="text" formControlName="email">
+    <input type="text" formControlName="codigo">  
+    <button type="submit" class="btn validar" [disabled]="verificationForm.invalid">
+        Validar
+    </button>
+</form>
+
+
+<app-footer></app-footer>
