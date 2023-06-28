@@ -1,15 +1,15 @@
 import {Router} from 'express';
-import expressAsyncHandler from "express-async-handler";
 const { categoryServices } = require ("../services/categoryServices")
-
 
 const router = Router();
 
-router.get("/",expressAsyncHandler(
-    async  (req, res) => {
+router.get("/", (req, res) => {
 
-        res.send(await categoryServices.getCategories());
-    }
-));
+    categoryServices.getCategories().then((categories:any) => {
+        res.status(200).json(categories);
+    }).catch ((error:any) => {
+        res.status(500).json({error: error.message});
+    })
+});
 
 export default router;
