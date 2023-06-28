@@ -1,51 +1,48 @@
 import {Router} from 'express';
-import expressAsyncHandler from "express-async-handler";
 const {productServices} = require("../services/productServices");
-
 
 const router = Router();
 
-/*
-router.get("/",expressAsyncHandler(
-    async (req, res) => {
+router.get("/", (req, res) => {
 
-        res.send(await productServices.getProducts());
-    }
-    ));
-
-*/
-router.get("/",
-    (req, res) => {
-    productServices.getProducts().then(products => {
+    productServices.getProducts().then((products:any) => {
         res.status(200).json(products);
-    }).catch (error => {
+    }).catch ((error:any) => {
         res.status(500).json({error: error.message});
     })
-}
-);
+});
 
-router.get("/search/:searchedProduct",expressAsyncHandler(
-    async (req, res) => {
+router.get("/search/:searchedProduct", (req, res) => {
 
     const searchedProduct = req.params.searchedProduct;
-    res.send(await productServices.searchedProducts(searchedProduct));
-}
-));
 
-router.get("/category/:searchedCategoryType",expressAsyncHandler(
-    async (req, res) => {
+    productServices.searchedProducts(searchedProduct).then((products:any) => {
+        res.status(200).json(products);
+    }).catch((error:any) => {
+        res.status(500).json({error: error.message});
+    })
+});
+
+router.get("/category/:searchedCategoryType", (req, res) => {
 
     const searchedCategory = req.params.searchedCategoryType;
-    res.send(await productServices.productsByCategory(searchedCategory));
-}
-));
 
-router.get("/:productId",expressAsyncHandler(
-    async (req, res) => {
+    productServices.productsByCategory(searchedCategory).then((products:any) => {
+        res.status(200).json(products);
+    }).catch((error:any) => {
+        res.status(500).json({error: error.message});
+    })
+});
+
+router.get("/:productId", (req, res) => {
 
     const productId = req.params.productId;
-    res.send(await productServices.searchById(productId));
-}
-));
+
+    productServices.searchById(productId).then((product:any) => {
+        res.status(200).json(product);
+    }).catch((error:any) => {
+        res.status(500).json({error: error.message});
+    })
+});
 
 export default router;
