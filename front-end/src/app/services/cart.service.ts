@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Cart } from '../../assets/interfaces/cart.interface';
 import { Product } from 'src/assets/interfaces/product.interface';
-import { BehaviorSubject } from 'rxjs';
+import {BehaviorSubject, Observable} from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import {LOG_CART} from "../shared/constants/urls";
+import {HttpClient} from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +12,10 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class CartService {
   public productList = new BehaviorSubject<any>([]);
   private cart: Cart[] = [];
-  constructor(private _snackBar: MatSnackBar) { }
+  constructor(
+    private _snackBar: MatSnackBar,
+    public httpClient:HttpClient
+  ) { }
 
 
 
@@ -65,7 +70,7 @@ export class CartService {
       producto.quantity = cantidad;
       this.cart.push(producto);
       this.productList.next(producto);
-      
+
     }
   }
   getSubtotal(): number {
@@ -125,4 +130,9 @@ obtenerPrecioPorCantidad(producto: Cart): number{
 
   return subtotal;
 }
+
+  logCart(cart: any):Observable<any> {
+      return this.httpClient.get(LOG_CART,cart);
+    }
+
 }

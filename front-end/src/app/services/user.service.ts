@@ -12,10 +12,11 @@ import { UserVerification } from 'src/assets/interfaces/userVerification.interfa
 })
 export class UserService{
 
-  constructor(private authService: SocialAuthService,public httpClient:HttpClient) { }
-
-
-
+  constructor(
+    private authService: SocialAuthService,
+    public httpClient:HttpClient
+  )
+  { }
 
 registrarUsuario(user:User) :Observable<any>{
   return this.httpClient.post<any>(USER_REGISTERURL,user);
@@ -41,7 +42,7 @@ verificarCodigo(user:UserVerification){
       return Promise.resolve(usuario);
     } else {
       return new Promise((resolve) => {
-        
+
         //Tenemos que utilizar la promesa por un tema de que this.authService.authState es asincrono y no sabemos cuando devuelve el valor antes del redireccionamiento
         this.authService.authState.subscribe((user) => {
           if (user) {
