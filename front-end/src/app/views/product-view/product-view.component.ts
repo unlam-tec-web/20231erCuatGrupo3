@@ -1,10 +1,8 @@
-
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
-import { FormControl } from "@angular/forms";
 import { ProductService } from "../../services/product.service";
 import { CartService } from 'src/app/services/cart.service';
-import { Product } from '../../../assets/interfaces/product.interface';
+import { Product } from "../../shared/models/Product";
 @Component({
   selector: 'app-product-view',
   templateUrl: './product-view.component.html',
@@ -43,9 +41,9 @@ export class ProductViewComponent implements OnInit{
     this.totalPrice= this.product.price;
   }
 
-  addToCart(quantity:number) {
-
-    this.cartService.agregarAlCarrito(this.product,quantity);
+  addToCart(quantity:number){
+    this.cartService.addToCart(this.product);
+    this.cartService.changeQuantity(this.product.id,quantity);
     this.router.navigate(['/cart']);
   }
 

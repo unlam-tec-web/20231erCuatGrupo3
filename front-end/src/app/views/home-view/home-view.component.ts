@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import {Product} from '../../../assets/interfaces/product.interface';
+import { Product } from "../../shared/models/Product";
 import {Category} from '../../../assets/interfaces/category.interface';
 import {ProductService} from "../../services/product.service";
 import {Observable} from "rxjs";

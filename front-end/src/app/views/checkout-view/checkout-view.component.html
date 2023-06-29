@@ -1,5 +1,5 @@
 <app-header></app-header>
-<section *ngIf="cartService.getCart().length != 0">
+<section *ngIf="this.cart.totalCount != 0">
 <div class="row m-5">
   <div class="col-50">
   <!--
@@ -24,16 +24,16 @@
     </span>
   </h4>
   <div>
-    <div *ngFor="let item of cartService.getCart()">
-      <h6 class="modo my-0"> {{item.name}}  X {{item.quantity}} </h6>
-      <small class="modo text-muted">{{item.description}} </small>
+    <div *ngFor="let cartProduct of this.cart.items">
+      <h6 class="modo my-0"> {{cartProduct.product.name}}  X {{cartProduct.quantity}} </h6>
+      <small class="modo text-muted">{{cartProduct.product.description}} </small>
       <div>
-        <span class="text-dark text-right">Precio $ {{cartService.obtenerPrecioPorCantidad(item)}} </span>
+        <span class="text-dark text-right">Precio $ {{cartProduct.price}} </span>
       </div>
       <hr>
     </div>
 </div>
-<p>Total<span class="price text-dark"><b>$ {{cartService.getSubtotal()}} </b></span></p>
+<p>Total<span class="price text-dark"><b>$ {{this.cart.totalPrice}} </b></span></p>
 </div>
 </div>
 

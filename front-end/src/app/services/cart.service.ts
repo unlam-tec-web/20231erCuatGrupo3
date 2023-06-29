@@ -1,138 +1,143 @@
 import { Injectable } from '@angular/core';
-import { Cart } from '../../assets/interfaces/cart.interface';
-import { Product } from 'src/assets/interfaces/product.interface';
+//import { Cart } from '../../assets/interfaces/cart.interface';
+import { Cart } from "../shared/models/Cart";
+import { Product } from "../shared/models/Product";
+//import { Product } from 'src/assets/interfaces/product.interface';
 import {BehaviorSubject, Observable} from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import {LOG_CART} from "../shared/constants/urls";
 import {HttpClient} from "@angular/common/http";
+import {CartProduct} from "../shared/models/CartProduct";
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
-  public productList = new BehaviorSubject<any>([]);
-  private cart: Cart[] = [];
+  private cart:Cart = this.getCartFromLocalStorage();
+  private cartSubject : BehaviorSubject<Cart> = new BehaviorSubject(this.cart);
   constructor(
     private _snackBar: MatSnackBar,
     public httpClient:HttpClient
   ) { }
 
-
-
-  agregarAlCarrito(product: Product, quantity:number): void {
-    const newCart: Cart = {
-      id: product.id,
-      type: product.type,
-      name: product.name,
-      details: product.details,
-      description: product.description,
-      brand: product.brand,
-      price: product.price,
-      img: product.img,
-      quantity: quantity,
-      totalPrice: quantity * product.price
-    };
-
-    // Verifica si el producto ya está en el carrito
-    const productInCart = this.cart.find(p => p.id === newCart.id);
-
-    if (productInCart) {
-      // Si el producto ya está en el carrito, actualiza su cantidad
-      productInCart.quantity= quantity + productInCart.quantity;
-    } else {
-      // Si el producto no está en el carrito, agrégalo
-      this.cart.push(newCart);
-      this.productList.next(this.cart);
-      this._snackBar.open('¡Producto agregado al carrito!', 'Ok', { duration: 3000 });
-
+  addToCart(product: Product):void {
+    let productInCart= this.cart.items
+      .find(items => items.product.id === product.id);
+    if(productInCart) {
+      this._snackBar.open('¡El Producto ya esta en el carro!', 'Ok', {duration: 3000});
+      return;
     }
+    this.cart.items.push(new CartProduct(product));
+    this.setCartToLocalStorage();
+    this._snackBar.open('¡Producto agregado al carrito!', 'Ok', { duration: 3000 });
   }
 
-
-  removeProductFromCart(producto: Cart): void {
-    const productInCart = this.cart.find(p => p.id === producto.id);
-    if (productInCart) {
-      const index = this.cart.findIndex(p => p.id === producto.id);
-      this.cart.splice(index, 1);
-    }
-    this.productList.next(this.cart);
+  removeFromCart(productId: string):void{
+    this.cart.items = this.cart.items
+      .filter(item => item.product.id != productId);
+    this.setCartToLocalStorage();
     this._snackBar.open('Producto eliminado del carrito.', 'Ok', {
       duration: 3000,
     });
   }
 
+  changeQuantity(productId: string, quantity: number):void{
+    let productInCart= this.cart.items
+      .find(items => items.product.id === productId);
+    if(!productInCart)
+      return;
 
-  actualizarCantidad(producto: Cart, cantidad: number): void {
-    const productInCart = this.cart.find(p => p.id === producto.id);
+    productInCart.quantity=quantity;
+    productInCart.price=productInCart.product.price*quantity;
+    this.setCartToLocalStorage();
+  }
 
+  decrementQuantity(productId: string) : void {
+    let productInCart = this.cart.items.
+    find(items => items.product.id === productId);
     if (productInCart) {
-      // Si el producto ya está en el carrito, actualiza su cantidad
-      producto.quantity = cantidad;
-      this.cart.push(producto);
-      this.productList.next(producto);
-
+      if (productInCart.quantity > 1) {
+        productInCart.quantity--;
+      }
     }
   }
-  getSubtotal(): number {
+
+  incrementQuantity(productId: string) : void {
+    let productInCart = this.cart.items.
+    find(items => items.product.id === productId);
+    if (productInCart) {
+      if (productInCart.quantity >= 1) {
+        productInCart.quantity++;
+      }
+    }
+  }
+
+  clearCart(){
+    this.cart = new Cart();
+    this.setCartToLocalStorage();
+  }
+
+  getCartObservable():Observable<Cart>{
+    return this.cartSubject.asObservable();
+  }
+
+  private setCartToLocalStorage(): void {
+    this.cart.totalPrice = this.cart.items
+      .reduce((prevSum, currentProduct) => prevSum + currentProduct.price, 0);
+    this.cart.totalCount = this.cart.items
+      .reduce((prevSum, currentProduct) => prevSum + currentProduct.quantity, 0);
+
+    const cartJson = JSON.stringify(this.cart);
+    localStorage.setItem('Cart', cartJson);
+    this.cartSubject.next(this.cart);
+  }
+
+  private getCartFromLocalStorage(): Cart {
+    const cartJson = localStorage.getItem('Cart');
+    return cartJson ? JSON.parse(cartJson) : new Cart();
+  }
+
+  productInCart(product: Product): boolean{
+    let productInCart= this.cart.items
+      .find(items => items.product.id === product.id);
+    if(productInCart)
+      return true;
+    return false;
+  }
+
+  getTotalFromProductsInCart(): number {
     let subtotal = 0;
-    this.cart.forEach(product => {
-      subtotal += product.price * product.quantity;
+    this.cart.items.forEach(cartProduct => {
+      subtotal += cartProduct.product.price * cartProduct.quantity;
     });
     return subtotal;
   }
 
-  obtenerTotal(): number {
-    let total = 0;
-    let deliveryCost = 400;
-    this.cart.forEach(product => {
-      const subtotal = product.price * product.quantity;
-      total += subtotal;
-    });
+   getTotalCost(): number {
+     let deliveryCost = 400;
 
-    return total+deliveryCost;
-  }
-
-  getCart(): Cart[] {
-    return this.cart;
-  }
-
-  decrementQuantity(product: Cart) : void {
-    const productInCart = this.cart.find(p => p.id === product.id);
-    if (productInCart) {
-    if (product.quantity > 1) {
-      product.quantity--;
-    }
-   }
-  }
-
-  incrementQuantity(product: Cart) : void {
-    const productInCart = this.cart.find(p => p.id === product.id);
-    if (productInCart) {
-    if (product.quantity >= 1) {
-      product.quantity++;
-    }
-  }
-}
-  getProductosEnCarrito(){
-  return this.productList.asObservable();
-}
-  vaciarCarrito(){
-  this.cart = []
-  this.productList.next(this.cart);
-}
-
-obtenerPrecioPorCantidad(producto: Cart): number{
-  let subtotal = 0;
-  const productoExistente = this.cart.find(p => p.id === producto.id);
-  if (productoExistente) {
-    subtotal=productoExistente.quantity*productoExistente.price;
+     return this.getTotalFromProductsInCart()+deliveryCost;
    }
 
-  return subtotal;
-}
-
-  logCart(cart: any):Observable<any> {
-      return this.httpClient.get(LOG_CART,cart);
+  getProductTotalCost(cartProduct: CartProduct): number{
+    let subtotal = 0;
+    const productoExistente = this.cart.items.
+    find(cartProduct => cartProduct.product.id === cartProduct.product.id);
+    if (productoExistente) {
+      subtotal=productoExistente.quantity*productoExistente.price;
     }
+    return subtotal;
+  }
+ /*
+   getProductosEnCarrito(){
+   return this.productList.asObservable();
+ }
+
+   logCart(cart: any):Observable<any> {
+       return this.httpClient.get(LOG_CART,cart);
+     }
+
+  */
 
 }
