@@ -4,8 +4,9 @@ import { Router } from '@angular/router';
 import { ProductService } from 'src/app/services/product.service';
 import { UserService } from 'src/app/services/user.service';
 import { CartService } from 'src/app/services/cart.service';
-import { Product } from 'src/assets/interfaces/product.interface';
+import { Product } from "../../shared/models/Product";
 import { User } from 'src/assets/interfaces/user.interface';
+import { Cart } from "../../shared/models/Cart";
 
 
 @Component({
@@ -19,6 +20,7 @@ export class HeaderComponent implements OnInit {
   loggedIn: boolean = false;
   nombreDelProducto: string = '';
   searchedProducts: Product[] = [];
+  cart! : Cart;
 
   constructor(
     private userServices: UserService,
@@ -31,13 +33,14 @@ export class HeaderComponent implements OnInit {
     this.obtenerUsuario();
     const localUser = localStorage.getItem('USUARIOLOGUEADO');
     if(this.user == null){
-      this.user = localUser ? JSON.parse(localUser) : null; 
+      this.user = localUser ? JSON.parse(localUser) : null;
     }
     this.loggedIn = this.user != null;
-    this.cartService.getProductosEnCarrito()
-    .subscribe(res=>{
-  this.totalItem = res.length;
-})
+    this.cartService.getCartObservable().subscribe((cart) => {
+      this.cart = cart;
+      this.totalItem = cart.totalCount;
+    })
+
   }
 
   obtenerProducto() {

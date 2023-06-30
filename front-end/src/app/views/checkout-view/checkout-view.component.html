@@ -1,22 +1,22 @@
 <app-header></app-header>
-<section *ngIf="cartService.getCart().length != 0">
+<section *ngIf="this.cart.totalCount != 0">
 <div class="row m-5">
   <div class="col-50">
-
-    <!--   <h3>Datos de contacto</h3>
+  <!--
+      <h3>Datos de contacto</h3>
       <div class="mb-4">
-        <h6 for="fname"><i class="fa fa-user"></i> Nombre completo</h6>
+        <h6 for="fname"><i class="fa fa-user"></i> Nombre completo: </h6>
         <h6>  </h6>
       </div>
       <div class="mb-4">
-        <h6 for="email"><i class="fa fa-envelope"></i> Email</h6>
+        <h6 for="email"><i class="fa fa-envelope"></i> Email: </h6>
         <h6>  </h6>
       </div>
       <div class="mb-4">
-        <h6 for="adr"><i class="fa fa-address-card-o"></i> Direcci&oacute;n</h6>
+        <h6 for="adr"><i class="fa fa-address-card-o"></i> Direcci&oacute;n: </h6>
         <h6> </h6>
       </div>
--->
+ -->
 <div class="container">
   <h4>Carrito
     <span class="price text-dark">
@@ -24,22 +24,22 @@
     </span>
   </h4>
   <div>
-    <div *ngFor="let item of cartService.getCart()">
-      <h6 class="modo my-0"> {{item.name}}  X {{item.quantity}} </h6>
-      <small class="modo text-muted">{{item.description}} </small>
+    <div *ngFor="let cartProduct of this.cart.items">
+      <h6 class="modo my-0"> {{cartProduct.product.name}}  X {{cartProduct.quantity}} </h6>
+      <small class="modo text-muted">{{cartProduct.product.description}} </small>
       <div>
-        <span class="text-dark text-right">Precio $ {{cartService.obtenerPrecioPorCantidad(item)}} </span>
+        <span class="text-dark text-right">Precio $ {{cartProduct.price}} </span>
       </div>
       <hr>
     </div>
 </div>
-<p>Total<span class="price text-dark"><b>$ {{cartService.getSubtotal()}} </b></span></p>
+<p>Total<span class="price text-dark"><b>$ {{this.cart.totalPrice}} </b></span></p>
 </div>
 </div>
 
   <div class="col-50">
-    <div><button routerLink="/order-confirmation" class="btn-finalizar">Comprar</button></div>
-    <div> <button  routerLink="/" class="btn btn-seguir">Agregar productos</button></div> 
+    <div><button (click)="confirmarCompra()" class="btn-finalizar">Comprar</button></div>
+    <div> <button  routerLink="/" class="btn btn-seguir">Agregar productos</button></div>
   </div>
 </div>
 

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from 'src/app/services/cart.service';
 import { UserService } from 'src/app/services/user.service';
-import {Cart} from 'src/assets/interfaces/cart.interface';
+import { Cart } from "../../shared/models/Cart";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-checkout-view',
@@ -10,21 +11,30 @@ import {Cart} from 'src/assets/interfaces/cart.interface';
 })
 export class CheckoutViewComponent implements OnInit{
 
-  public cart: Cart []=[];
- //user
+  cart! : Cart;
+  email!: string|undefined;
+  name!: string|undefined;
 
-  constructor(public cartService: CartService, public userService: UserService){}
+  constructor(
+    public cartService: CartService,
+    public userService: UserService,
+    protected router:Router,
+  ){
+    this.cartService.getCartObservable().subscribe((cart) => {
+      this.cart = cart;
+    })
+  }
 
   ngOnInit(): void {
-    this.cart=this.cartService.getCart();
   }
- 
 
-  public getPrecio(producto: Cart){
-    this.cartService.obtenerPrecioPorCantidad(producto);
+  public confirmarCompra(){
+
+    this.cartService.logCart();
+
+    this.cartService.clearCart();
+    this.router.navigate(['/order-confirmation']);
   }
-  public getSubtotal(){
-    this.cartService.getSubtotal();
-  }
+
 
 }
