@@ -30,10 +30,11 @@ export class CheckoutViewComponent implements OnInit{
 
   public confirmarCompra(){
 
-    this.cartService.logCart();
-
-    this.cartService.clearCart();
-    this.router.navigate(['/order-confirmation']);
+    this.cartService.logCart().subscribe((response) => {
+      console.log(response)
+      this.cartService.clearCart();
+      this.router.navigate(['/order-confirmation']);
+    })
   }
 
 

@@ -119,9 +119,9 @@ export class CartService {
     return subtotal;
   }
 
-   logCart() {
+   logCart() :Observable<any> {
 
-    this.httpClient.post<any>(LOG_CART,this.cart);
+    return this.httpClient.post<any>(LOG_CART,this.cart);
   }
 
 
