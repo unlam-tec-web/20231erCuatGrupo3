@@ -2,10 +2,9 @@ import {Router} from "express";
 
 const router = Router();
 
-router.get("/log", (req, res) => {
-    const  cart  = req.body;
-    console.log("A" + cart );
-    res.status(200).json(cart);
+router.post("/log", (req, res) => {
+    console.log(req.body);
+    res.status(200).json(req.body);
 });
 
 export default router;

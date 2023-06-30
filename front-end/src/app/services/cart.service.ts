@@ -1,14 +1,11 @@
 import { Injectable } from '@angular/core';
-//import { Cart } from '../../assets/interfaces/cart.interface';
 import { Cart } from "../shared/models/Cart";
 import { Product } from "../shared/models/Product";
-//import { Product } from 'src/assets/interfaces/product.interface';
 import {BehaviorSubject, Observable} from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import {LOG_CART} from "../shared/constants/urls";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient,HttpHeaders} from "@angular/common/http";
 import {CartProduct} from "../shared/models/CartProduct";
-
+import { LOG_CART } from "../shared/constants/urls";
 
 @Injectable({
   providedIn: 'root'
@@ -98,14 +95,6 @@ export class CartService {
     return cartJson ? JSON.parse(cartJson) : new Cart();
   }
 
-  productInCart(product: Product): boolean{
-    let productInCart= this.cart.items
-      .find(items => items.product.id === product.id);
-    if(productInCart)
-      return true;
-    return false;
-  }
-
   getTotalFromProductsInCart(): number {
     let subtotal = 0;
     this.cart.items.forEach(cartProduct => {
@@ -122,22 +111,19 @@ export class CartService {
 
   getProductTotalCost(cartProduct: CartProduct): number{
     let subtotal = 0;
-    const productoExistente = this.cart.items.
-    find(cartProduct => cartProduct.product.id === cartProduct.product.id);
-    if (productoExistente) {
-      subtotal=productoExistente.quantity*productoExistente.price;
+    const product = this.cart.items.
+    find(p => p.product.id === cartProduct.product.id);
+    if (product) {
+      subtotal=product.quantity*product.price;
     }
     return subtotal;
   }
- /*
-   getProductosEnCarrito(){
-   return this.productList.asObservable();
- }
 
-   logCart(cart: any):Observable<any> {
-       return this.httpClient.get(LOG_CART,cart);
-     }
+   logCart() {
 
-  */
+    this.httpClient.post<any>(LOG_CART,this.cart);
+  }
+
+
 
 }
